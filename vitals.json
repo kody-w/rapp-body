@@ -1,0 +1,33 @@
+{
+  "spec": "rapp-body-vitals/1.0",
+  "twin_id": "rappid:@kody-w/rapp-body:324197c16e7e0ca78e19f8a4e1aef76ed34b6694527bb566753c4c89a8ba71f6",
+  "updated": "2026-07-09T00:08:59.720Z",
+  "head": {
+    "seq": 23,
+    "sha256": "496b13af4e8aa15689fbe136cb7fb2bb2989e90f9592f8d37b09fb8e8b8b9e8c",
+    "ts": "2026-07-08T23:53:56.973Z",
+    "kind": "body.pulse"
+  },
+  "health": {
+    "spec_version": "1.1.0",
+    "mirrors_identical": true,
+    "repos_total": 54,
+    "repos_present": 51,
+    "transport_unreadable": 0,
+    "degraded": false,
+    "born_recent": [],
+    "vanished_recent": [],
+    "heads_advanced_recent": [
+      "rapp-installer",
+      "rappterbook"
+    ],
+    "drift_sweep": {
+      "verdict": "DRIFT-FOUND",
+      "findings": 13,
+      "high": 3
+    },
+    "open_drift_issues": 2,
+    "observation_gaps": 0,
+    "note": "identity re-mint cascade (darkroom): keyless rappid re-anchored to sha256(uuid4.bytes); all frame twin_ids re-stamped."
+  }
+}
