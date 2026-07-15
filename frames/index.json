@@ -1,12 +1,12 @@
 {
   "spec": "rapp-frame-index/1.0",
   "twin_id": "rappid:@kody-w/rapp-body:324197c16e7e0ca78e19f8a4e1aef76ed34b6694527bb566753c4c89a8ba71f6",
-  "generated": "2026-07-15T02:12:32.717Z",
-  "count": 28,
+  "generated": "2026-07-15T09:22:58.179Z",
+  "count": 29,
   "head": {
-    "seq": 27,
-    "sha256": "2b525e67f3d49fe1b8d1266a81746c77feee34c31747d66655ea62de8b5e041d",
-    "ts": "2026-07-15T02:12:32.701Z",
+    "seq": 28,
+    "sha256": "639faa11008b28f7348ce7d1b200d7f89921cc2c8c47bc3fed3bb2d59f149048",
+    "ts": "2026-07-15T09:22:58.171Z",
     "kind": "body.pulse"
   },
   "frames": [
@@ -233,6 +233,14 @@
       "kind": "body.pulse",
       "sha256": "2b525e67f3d49fe1b8d1266a81746c77feee34c31747d66655ea62de8b5e041d",
       "parent_sha": "13120453768523d9b8f6faf55993d640e7fe51f4fe333af1dd1ab107a6351d6d"
+    },
+    {
+      "seq": 28,
+      "path": "frames/28.json",
+      "ts": "2026-07-15T09:22:58.171Z",
+      "kind": "body.pulse",
+      "sha256": "639faa11008b28f7348ce7d1b200d7f89921cc2c8c47bc3fed3bb2d59f149048",
+      "parent_sha": "2b525e67f3d49fe1b8d1266a81746c77feee34c31747d66655ea62de8b5e041d"
     }
   ]
 }

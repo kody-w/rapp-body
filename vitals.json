@@ -1,11 +1,11 @@
 {
   "spec": "rapp-body-vitals/1.0",
   "twin_id": "rappid:@kody-w/rapp-body:324197c16e7e0ca78e19f8a4e1aef76ed34b6694527bb566753c4c89a8ba71f6",
-  "updated": "2026-07-15T02:12:32.718Z",
+  "updated": "2026-07-15T09:22:58.179Z",
   "head": {
-    "seq": 27,
-    "sha256": "2b525e67f3d49fe1b8d1266a81746c77feee34c31747d66655ea62de8b5e041d",
-    "ts": "2026-07-15T02:12:32.701Z",
+    "seq": 28,
+    "sha256": "639faa11008b28f7348ce7d1b200d7f89921cc2c8c47bc3fed3bb2d59f149048",
+    "ts": "2026-07-15T09:22:58.171Z",
     "kind": "body.pulse"
   },
   "health": {
@@ -18,9 +18,9 @@
     "born_recent": [],
     "vanished_recent": [],
     "heads_advanced_recent": [
-      "RAPP",
-      "rapp-egg-hub",
-      "rapp-map",
+      "RAPP-Bible",
+      "rapp-god",
+      "rappterbook",
       "RAR"
     ],
     "drift_sweep": {
