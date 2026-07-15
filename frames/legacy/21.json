@@ -1,11 +1,12 @@
 {
-  "spec": "rapp/1",
+  "spec": "rapp-frame/2.0",
   "kind": "body.pulse",
-  "stream_id": "rappid:@kody-w/rapp-body:817839d299ddfb173097c58a0434c5c1ef5cd2cd55086c46cfe728bf9bfeb657",
-  "seq": 22,
-  "utc": "2026-07-08T23:24:35.633Z",
+  "seq": 21,
+  "ts": "2026-07-08T23:24:20.283Z",
+  "twin_id": "rappid:@kody-w/rapp-body:324197c16e7e0ca78e19f8a4e1aef76ed34b6694527bb566753c4c89a8ba71f6",
+  "kernel_version": "0.6.0",
   "payload": {
-    "taken_ts": "2026-07-08T23:24:35.633Z",
+    "taken_ts": "2026-07-08T23:24:20.283Z",
     "provenance": {
       "mode": "witnessed"
     },
@@ -669,8 +670,24 @@
     },
     "events": [
       {
-        "type": "heartbeat",
-        "text": "weekly liveness pulse \u2014 the body is alive even when nothing changed."
+        "type": "genesis",
+        "text": "The witnessed biography opens: the body begins pulsing live. Every earlier frame is reconstructed from git history; from here the pulse observes the organism directly."
+      },
+      {
+        "type": "biography-born",
+        "text": "kody-w/rapp-body born — the organism's own public, sha256-chained biography (rapp-frame/2.0), the same organ a twin carries, now at ecosystem scale."
+      },
+      {
+        "type": "immune-system",
+        "text": "PLAN-drift-immunity in flight: the mesh sweep DETECTS drift, these frames REMEMBER it. Detection + memory close the loop."
+      },
+      {
+        "type": "sweep",
+        "verdict": "DRIFT-FOUND",
+        "findings": 13,
+        "high": 3,
+        "issues_filed": 13,
+        "text": "Full-mesh ecosystem sweep: DRIFT-FOUND — 13 findings, 3 high. 13 drift() issue(s) filed; reconciliation in-flight."
       },
       {
         "type": "observation-gap",
@@ -689,9 +706,7 @@
       }
     ]
   },
-  "payload_hash": "aea322ea9a77dfa4348c53ae4e0769b6ea61cb559749ed4ca332f0758177adee",
-  "prev": "24fe782f3fe9198fd8068c76e9023878fab0d349f5e408711676264b1a21a64b",
-  "prev_wave": null,
-  "sig": null,
-  "frame_hash": "1df936922c86b4254169742eec4ffef8784e43681836a81a991b272c1d846905"
+  "sha256": "99bd52ee4a03f9f4eb4b565f3ddc0a6c65511eb7191890ec49a786f2a55fe7f3",
+  "parent_sha": "179d6e124917785f538eb77e3e355a99df3c657b0287e615c45ea72bf8fb4f0b",
+  "sig": null
 }

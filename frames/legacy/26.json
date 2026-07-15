@@ -1,55 +1,58 @@
 {
-  "spec": "rapp/1",
+  "spec": "rapp-frame/2.0",
   "kind": "body.pulse",
-  "stream_id": "rappid:@kody-w/rapp-body:817839d299ddfb173097c58a0434c5c1ef5cd2cd55086c46cfe728bf9bfeb657",
-  "seq": 22,
-  "utc": "2026-07-08T23:24:35.633Z",
+  "seq": 26,
+  "ts": "2026-07-15T01:41:53.343Z",
+  "twin_id": "rappid:@kody-w/rapp-body:324197c16e7e0ca78e19f8a4e1aef76ed34b6694527bb566753c4c89a8ba71f6",
+  "kernel_version": "0.6.0",
   "payload": {
-    "taken_ts": "2026-07-08T23:24:35.633Z",
+    "taken_ts": "2026-07-15T01:41:53.343Z",
     "provenance": {
       "mode": "witnessed"
     },
     "skeleton": {
-      "spec_version": "1.1.0",
+      "spec_version": "1.2.0",
       "homes": {
         "rapp": {
           "repo": "kody-w/RAPP",
           "path": "specs/ecosystem-spec.json",
           "label": "kody-w/RAPP (canonical source)",
           "present": true,
-          "sha256": "fc9c622e2bfa7005be55e4069868e41f8c94a3086122af6f04d7b861c44e8fc3"
+          "sha256": "f1ddcf7e1302a82195fa682ad94140d0d066bbe60647befc5030ec5b50507e9e"
         },
         "rapp_god": {
           "repo": "kody-w/rapp-god",
           "path": "api/v1/ecosystem-spec.json",
           "label": "kody-w/rapp-god",
           "present": true,
-          "sha256": "fc9c622e2bfa7005be55e4069868e41f8c94a3086122af6f04d7b861c44e8fc3"
+          "sha256": "f1ddcf7e1302a82195fa682ad94140d0d066bbe60647befc5030ec5b50507e9e"
         },
         "rapp_map": {
           "repo": "kody-w/rapp-map",
           "path": "ecosystem-spec.json",
           "label": "kody-w/rapp-map (mirror of record for reads)",
           "present": true,
-          "sha256": "fc9c622e2bfa7005be55e4069868e41f8c94a3086122af6f04d7b861c44e8fc3"
+          "sha256": "f1ddcf7e1302a82195fa682ad94140d0d066bbe60647befc5030ec5b50507e9e"
         }
       },
       "mirrors_identical": true,
       "spine": {
-        "registry_sha256": "3fc3078802a44a8fc6bf7502cb97eecd7454d9188cf9fe1b74e410705fe46ac2",
-        "foundation_sha256": "967f58f0906e0a3145cd002de3b54aafc5e6bf61b44214bd6bbb16afde702f51"
+        "registry_sha256": "8367f656a89addb9781a8182ec0655e268c0c031cf836e27a9eec50ba51d6560",
+        "foundation_sha256": "18748997a9f49c1f592f95798443a4a4a3034520a578ac363758ab79527bd0cd"
       }
     },
     "census": {
       "basis": "witnessed",
-      "count": 54,
-      "reachable": 51,
+      "count": 55,
+      "present": 52,
+      "transport_unreadable": 0,
       "repos": [
         {
           "name": "CommunityRAPP",
           "owner": "kody-w",
           "layer": "runtime",
           "category": "memory & social",
+          "status": "present",
           "reachable": true,
           "head_sha": "e5144a389d7201f13175180debd4232f1e0313c7",
           "pushed_at": "2026-06-29T00:02:19Z",
@@ -61,9 +64,10 @@
           "owner": "kody-w",
           "layer": "distribution",
           "category": null,
+          "status": "present",
           "reachable": true,
-          "head_sha": "62e2686ec7fd41be3d2629ce698c0369e291a3f4",
-          "pushed_at": "2026-07-08T23:12:31Z",
+          "head_sha": "f675cac6b73b87d1c039d31206b01741481a24a8",
+          "pushed_at": "2026-07-09T01:49:26Z",
           "created_at": "2026-05-06T15:32:43Z",
           "archived": false
         },
@@ -72,6 +76,7 @@
           "owner": "kody-w",
           "layer": "leviathan",
           "category": null,
+          "status": "present",
           "reachable": true,
           "head_sha": "42d02ad1b041b328540b30d54c7b2a68b9d961aa",
           "pushed_at": "2026-06-28T23:56:10Z",
@@ -83,9 +88,10 @@
           "owner": "kody-w",
           "layer": "runtime",
           "category": null,
+          "status": "present",
           "reachable": true,
-          "head_sha": "455748a5836ffdf5fd881d86c6d6c2f8837d17e5",
-          "pushed_at": "2026-07-07T00:57:27Z",
+          "head_sha": "7b6dbca2cf23f3a21dacc604d2bda34e7e13cd6a",
+          "pushed_at": "2026-07-12T03:47:06Z",
           "created_at": "2026-02-05T00:44:41Z",
           "archived": false
         },
@@ -94,6 +100,7 @@
           "owner": "kody-w",
           "layer": "uncataloged",
           "category": "mcp & cartridges",
+          "status": "present",
           "reachable": true,
           "head_sha": "2e709f52454f4a7667c09e91c072cce3d0fbb8c7",
           "pushed_at": "2026-06-03T13:07:11Z",
@@ -105,9 +112,10 @@
           "owner": "kody-w",
           "layer": "runtime",
           "category": "kernel & install",
+          "status": "present",
           "reachable": true,
-          "head_sha": "ecc758862f3a73a4b35a780c29327a0497aa6b36",
-          "pushed_at": "2026-07-08T23:11:34Z",
+          "head_sha": "524289cc427ead21f13b2060f026c60600095880",
+          "pushed_at": "2026-07-15T00:32:04Z",
           "created_at": "2025-11-24T02:08:13Z",
           "archived": false
         },
@@ -116,6 +124,7 @@
           "owner": "kody-w",
           "layer": "distribution",
           "category": null,
+          "status": "present",
           "reachable": true,
           "head_sha": "0b69162326e5358a1e26a768ff50099c91a1e47c",
           "pushed_at": "2026-07-06T17:50:30Z",
@@ -127,9 +136,10 @@
           "owner": "kody-w",
           "layer": "uncataloged",
           "category": "bible & spec",
+          "status": "present",
           "reachable": true,
-          "head_sha": "13ae2513f75bf4bb49e8e7c9639e2654e1364b2a",
-          "pushed_at": "2026-07-08T23:13:52Z",
+          "head_sha": "e3e38739cb3429f488e04fce474eb7dacc9a37b3",
+          "pushed_at": "2026-07-15T00:32:07Z",
           "created_at": "2026-05-22T00:20:36Z",
           "archived": false
         },
@@ -138,6 +148,7 @@
           "owner": "kody-w",
           "layer": "runtime",
           "category": "run a brainstem",
+          "status": "present",
           "reachable": true,
           "head_sha": "418fd69d76e8fc6a494782b669560f4212292fb5",
           "pushed_at": "2026-06-03T13:06:36Z",
@@ -149,6 +160,7 @@
           "owner": "kody-w",
           "layer": "distribution",
           "category": null,
+          "status": "present",
           "reachable": true,
           "head_sha": "36f57fafedae548095f2fe123cfd1f98fffc65b8",
           "pushed_at": "2026-06-29T17:22:20Z",
@@ -160,6 +172,7 @@
           "owner": "kody-w",
           "layer": "distribution",
           "category": "mcp & cartridges",
+          "status": "present",
           "reachable": true,
           "head_sha": "eeed9732be6142cf45a09eb6635a01bd4a508470",
           "pushed_at": "2026-06-03T13:06:53Z",
@@ -171,9 +184,10 @@
           "owner": "kody-w",
           "layer": "network",
           "category": "front doors & neighborhoods",
+          "status": "present",
           "reachable": true,
           "head_sha": "218b6e6026ceecd2cf7e71f7d4010cb07ebb7f5c",
-          "pushed_at": "2026-07-08T23:13:35Z",
+          "pushed_at": "2026-07-09T01:49:30Z",
           "created_at": "2026-05-11T17:49:07Z",
           "archived": false
         },
@@ -182,6 +196,7 @@
           "owner": "kody-w",
           "layer": "runtime",
           "category": null,
+          "status": "present",
           "reachable": true,
           "head_sha": "bd843bba3ba14754ccd85594b3a1ce2b26a4cc74",
           "pushed_at": "2026-06-17T15:20:21Z",
@@ -193,6 +208,7 @@
           "owner": "kody-w",
           "layer": "distribution",
           "category": null,
+          "status": "present",
           "reachable": true,
           "head_sha": "dabd5938e116204ea4a4b1881e737334d8a4d642",
           "pushed_at": "2026-05-26T17:55:38Z",
@@ -204,6 +220,7 @@
           "owner": "kody-w",
           "layer": "kernel",
           "category": null,
+          "status": "present",
           "reachable": true,
           "head_sha": "dad58796450d2e561121f3ff9c6f0efc668d2859",
           "pushed_at": "2026-06-28T21:05:37Z",
@@ -215,6 +232,7 @@
           "owner": "kody-w",
           "layer": "uncataloged",
           "category": "channels & trust",
+          "status": "present",
           "reachable": true,
           "head_sha": "bc9099eb3c79a59fb43a3a2ba7f5d3caec0df381",
           "pushed_at": "2026-06-03T13:06:59Z",
@@ -226,9 +244,10 @@
           "owner": "kody-w",
           "layer": "distribution",
           "category": "stores & catalogs",
+          "status": "present",
           "reachable": true,
-          "head_sha": "3d073dc9f917196fc72bc7b2df258d5d22e95584",
-          "pushed_at": "2026-07-08T23:12:02Z",
+          "head_sha": "e4513d798d586b135325e17a9383be6f9d771de7",
+          "pushed_at": "2026-07-14T18:59:19Z",
           "created_at": "2026-05-04T16:55:30Z",
           "archived": false
         },
@@ -237,9 +256,10 @@
           "owner": "kody-w",
           "layer": "network",
           "category": "identity & registry",
+          "status": "present",
           "reachable": true,
-          "head_sha": "96c98837880470e8f3aa2376c66c9d762d3c1e23",
-          "pushed_at": "2026-06-28T22:12:50Z",
+          "head_sha": "24c8fdc1e770c790b98724002d719d515d5e5465",
+          "pushed_at": "2026-07-09T01:49:31Z",
           "created_at": "2026-05-09T23:54:41Z",
           "archived": false
         },
@@ -248,6 +268,7 @@
           "owner": "kody-w",
           "layer": "kernel",
           "category": "identity & registry",
+          "status": "present",
           "reachable": true,
           "head_sha": "868e80c33bbe1c03597372e3b9db54aa5b736a95",
           "pushed_at": "2026-06-28T22:12:52Z",
@@ -259,6 +280,7 @@
           "owner": "kody-w",
           "layer": "leviathan",
           "category": null,
+          "status": "present",
           "reachable": true,
           "head_sha": "a78a9c2aba06f9e788d735341b9ff7d2cace3189",
           "pushed_at": "2026-06-28T20:48:29Z",
@@ -270,9 +292,10 @@
           "owner": "kody-w",
           "layer": "map",
           "category": "identity & registry",
+          "status": "present",
           "reachable": true,
-          "head_sha": "25efc47d6bc77d3bb96d016fc37d91a79d88f174",
-          "pushed_at": "2026-07-08T23:13:16Z",
+          "head_sha": "e4438c69c6132a7a412d320b40d7599bf8853de5",
+          "pushed_at": "2026-07-15T00:15:03Z",
           "created_at": "2026-05-26T01:03:11Z",
           "archived": false
         },
@@ -281,6 +304,7 @@
           "owner": "kody-w",
           "layer": "uncataloged",
           "category": "front doors & neighborhoods",
+          "status": "present",
           "reachable": true,
           "head_sha": "b582c5adbd4cb3da7f43f1b51b7326e8d8b18a79",
           "pushed_at": "2026-05-26T23:53:06Z",
@@ -292,9 +316,10 @@
           "owner": "kody-w",
           "layer": "distribution",
           "category": "kernel & install",
+          "status": "present",
           "reachable": true,
-          "head_sha": "fbdb36ee152bc2ad80211448192286bfb7790ee9",
-          "pushed_at": "2026-07-08T23:18:53Z",
+          "head_sha": "5fbde1776a72715935c3d597a9ddfce28a04032b",
+          "pushed_at": "2026-07-10T17:21:17Z",
           "created_at": "2026-01-22T00:38:37Z",
           "archived": false
         },
@@ -303,6 +328,7 @@
           "owner": "kody-w",
           "layer": "network",
           "category": "channels & trust",
+          "status": "present",
           "reachable": true,
           "head_sha": "f3e7e2d04c30772d1abc0476da945a860fe226ab",
           "pushed_at": "2026-05-26T17:55:43Z",
@@ -314,6 +340,7 @@
           "owner": "kody-w",
           "layer": "uncataloged",
           "category": "channels & trust",
+          "status": "present",
           "reachable": true,
           "head_sha": "9f844ec5e8a148b5a17e1080e9a715feea954e5b",
           "pushed_at": "2026-05-26T17:55:45Z",
@@ -325,6 +352,7 @@
           "owner": "kody-w",
           "layer": "distribution",
           "category": null,
+          "status": "present",
           "reachable": true,
           "head_sha": "2276a662725e8f37759c04c9497bb51a3f6a0f7e",
           "pushed_at": "2026-06-28T16:38:18Z",
@@ -336,9 +364,10 @@
           "owner": "kody-w",
           "layer": "map",
           "category": "identity & registry",
+          "status": "present",
           "reachable": true,
-          "head_sha": "491e408805719ee8023a1dc910b4cdf9a8efab5a",
-          "pushed_at": "2026-07-08T23:12:57Z",
+          "head_sha": "12258abe626fe968b1a1ac110c8fc7c79a4385c7",
+          "pushed_at": "2026-07-15T00:32:05Z",
           "created_at": "2026-05-25T23:58:07Z",
           "archived": false
         },
@@ -347,6 +376,7 @@
           "owner": "kody-w",
           "layer": "network",
           "category": "mcp & cartridges",
+          "status": "present",
           "reachable": true,
           "head_sha": "d8d8d334f3d60e2649f452806faf69071998b68f",
           "pushed_at": "2026-06-22T00:09:55Z",
@@ -354,10 +384,23 @@
           "archived": false
         },
         {
+          "name": "rapp-messaging",
+          "owner": "kody-w",
+          "layer": "network",
+          "category": null,
+          "status": "present",
+          "reachable": true,
+          "head_sha": "0586678530bb16215f91104a11737bc69c6f0c48",
+          "pushed_at": "2026-07-11T17:24:37Z",
+          "created_at": "2026-07-11T17:20:59Z",
+          "archived": false
+        },
+        {
           "name": "rapp-moment",
           "owner": "kody-w",
           "layer": "identity",
           "category": null,
+          "status": "present",
           "reachable": true,
           "head_sha": "12846ebab648eb9a97e3ad79cde8c8e648994b37",
           "pushed_at": "2026-06-28T23:56:06Z",
@@ -369,6 +412,7 @@
           "owner": "kody-w",
           "layer": "network",
           "category": "channels & trust",
+          "status": "present",
           "reachable": true,
           "head_sha": "44e0c6eb49d619932e645fb9d9b12a5fa37f71b1",
           "pushed_at": "2026-06-28T21:21:57Z",
@@ -380,9 +424,10 @@
           "owner": "kody-w",
           "layer": "network",
           "category": "front doors & neighborhoods",
+          "status": "present",
           "reachable": true,
-          "head_sha": "35f3e2e8470497f9ac0587a49cbecb4ead61e953",
-          "pushed_at": "2026-07-08T23:12:17Z",
+          "head_sha": "5d45335d7e96408466678a00af99d36515077e13",
+          "pushed_at": "2026-07-09T01:49:25Z",
           "created_at": "2026-05-21T16:21:53Z",
           "archived": false
         },
@@ -391,6 +436,7 @@
           "owner": "kody-w",
           "layer": "network",
           "category": "front doors & neighborhoods",
+          "status": "present",
           "reachable": true,
           "head_sha": "de07d307740e318723426c9463fd0c3a2654707b",
           "pushed_at": "2026-05-27T17:56:10Z",
@@ -402,6 +448,7 @@
           "owner": "kody-w",
           "layer": "kernel",
           "category": null,
+          "status": "present",
           "reachable": true,
           "head_sha": "c94cf5f034c52258a6e9225d82cb671e7fa27c8c",
           "pushed_at": "2026-06-29T17:06:03Z",
@@ -413,6 +460,7 @@
           "owner": "kody-w",
           "layer": "identity",
           "category": "channels & trust",
+          "status": "present",
           "reachable": true,
           "head_sha": "c6e35c85428bd8761d2398ce172e14b22f9364c9",
           "pushed_at": "2026-06-03T13:07:27Z",
@@ -424,9 +472,10 @@
           "owner": "kody-w",
           "layer": "map",
           "category": null,
+          "status": "present",
           "reachable": true,
-          "head_sha": "0b251ddcf1b17cb21416f38d146907dc4ea5d04e",
-          "pushed_at": "2026-06-29T17:07:36Z",
+          "head_sha": "b41a4578104ebd7d837fe8022bc5f81acc6c377d",
+          "pushed_at": "2026-07-15T00:29:59Z",
           "created_at": "2026-06-28T16:00:32Z",
           "archived": false
         },
@@ -435,9 +484,10 @@
           "owner": "kody-w",
           "layer": "distribution",
           "category": "identity & registry",
+          "status": "present",
           "reachable": true,
-          "head_sha": "21f9f022916b0dea5be8681137e05a51f5a45d8d",
-          "pushed_at": "2026-07-07T02:51:24Z",
+          "head_sha": "77f81ec6f20c28662dfb4b6c8293f88370ef26f2",
+          "pushed_at": "2026-07-12T01:49:49Z",
           "created_at": "2026-05-26T01:32:53Z",
           "archived": false
         },
@@ -446,6 +496,7 @@
           "owner": "kody-w",
           "layer": "network",
           "category": "front doors & neighborhoods",
+          "status": "present",
           "reachable": true,
           "head_sha": "b727e96be888e319bdad760593744e511917615a",
           "pushed_at": "2026-06-03T13:07:16Z",
@@ -457,6 +508,7 @@
           "owner": "kody-w",
           "layer": "uncataloged",
           "category": "kernel & install",
+          "status": "present",
           "reachable": true,
           "head_sha": "d515e8cc9ea6647ba478cc4f723e022ca712aec5",
           "pushed_at": "2026-05-26T17:55:53Z",
@@ -468,6 +520,7 @@
           "owner": "kody-w",
           "layer": "uncataloged",
           "category": "kernel & install",
+          "status": "present",
           "reachable": true,
           "head_sha": "0aea2ecf7e66ebffb30d3af6a550eac638356292",
           "pushed_at": "2026-05-26T17:55:29Z",
@@ -479,6 +532,7 @@
           "owner": "kody-w",
           "layer": "map",
           "category": null,
+          "status": "present",
           "reachable": true,
           "head_sha": "45d6ee5049dfc35d12d6cbb14e9e27e0297573cf",
           "pushed_at": "2026-06-22T00:10:30Z",
@@ -490,6 +544,7 @@
           "owner": "kody-w",
           "layer": "distribution",
           "category": null,
+          "status": "present",
           "reachable": true,
           "head_sha": "00ac2f73cade3f64c39359e9a90fca636bc387aa",
           "pushed_at": "2026-02-03T16:09:40Z",
@@ -501,26 +556,25 @@
           "owner": "kody-w",
           "layer": "uncataloged",
           "category": "kernel & install",
+          "status": "absent",
           "reachable": false,
-          "head_sha": null,
-          "pushed_at": null,
-          "created_at": null
+          "head_sha": null
         },
         {
           "name": "rapp_leviathan_factory",
           "owner": "kody-w",
           "layer": "leviathan",
           "category": null,
+          "status": "absent",
           "reachable": false,
-          "head_sha": null,
-          "pushed_at": null,
-          "created_at": null
+          "head_sha": null
         },
         {
           "name": "RAPP_Sense_Store",
           "owner": "kody-w",
           "layer": "distribution",
           "category": "stores & catalogs",
+          "status": "present",
           "reachable": true,
           "head_sha": "963068714a21b8eefa72e27ebc472b240701c1a5",
           "pushed_at": "2026-06-03T13:08:06Z",
@@ -532,6 +586,7 @@
           "owner": "kody-w",
           "layer": "distribution",
           "category": "stores & catalogs",
+          "status": "present",
           "reachable": true,
           "head_sha": "d8d55d23f5ba62ab43f31338d1f0385cfaaab4c8",
           "pushed_at": "2026-06-29T00:20:22Z",
@@ -543,6 +598,7 @@
           "owner": "kody-w",
           "layer": "distribution",
           "category": null,
+          "status": "present",
           "reachable": true,
           "head_sha": "5bfcea8d6aaa78e988827783b44e0d384ed3c14a",
           "pushed_at": "2026-06-22T02:25:39Z",
@@ -554,9 +610,10 @@
           "owner": "kody-w",
           "layer": "leviathan",
           "category": "memory & social",
+          "status": "present",
           "reachable": true,
-          "head_sha": "1a168b7815f6f06f5f9b42c43016e8796f65b583",
-          "pushed_at": "2026-07-08T23:20:29Z",
+          "head_sha": "610c9e451292eb5962d46ed3cce67ac149e8b895",
+          "pushed_at": "2026-07-15T01:32:09Z",
           "created_at": "2026-02-13T01:26:22Z",
           "archived": false
         },
@@ -565,9 +622,10 @@
           "owner": "kody-w",
           "layer": "runtime",
           "category": null,
+          "status": "present",
           "reachable": true,
-          "head_sha": "b69b8d1857b122a326a1c9e92920fe458c1b1124",
-          "pushed_at": "2026-05-27T17:42:28Z",
+          "head_sha": "409ee5a253a637f5d3ad531cae164828fd9e2a1a",
+          "pushed_at": "2026-07-09T01:49:31Z",
           "created_at": "2026-05-04T15:19:30Z",
           "archived": false
         },
@@ -576,9 +634,10 @@
           "owner": "kody-w",
           "layer": "distribution",
           "category": "identity & registry",
+          "status": "present",
           "reachable": true,
-          "head_sha": "9467be4f400e0902240e146afa92de2948a33d47",
-          "pushed_at": "2026-07-08T22:58:56Z",
+          "head_sha": "c1349c387156bed8d9589d884df1a5b33e998c5e",
+          "pushed_at": "2026-07-14T22:52:33Z",
           "created_at": "2026-04-03T15:06:54Z",
           "archived": false
         },
@@ -587,6 +646,7 @@
           "owner": "kody-w",
           "layer": "uncataloged",
           "category": "the agent-built web",
+          "status": "present",
           "reachable": true,
           "head_sha": "d61be35069bd45e2dd45de7b0c2eb7cec1da9861",
           "pushed_at": "2026-05-27T01:50:29Z",
@@ -598,6 +658,7 @@
           "owner": "kody-w",
           "layer": "uncataloged",
           "category": "the agent-built web",
+          "status": "present",
           "reachable": true,
           "head_sha": "ee9ee28d12e57fc49f95f6fb71ac0e8b5bb483a8",
           "pushed_at": "2026-05-27T01:47:07Z",
@@ -609,6 +670,7 @@
           "owner": "kody-w",
           "layer": "distribution",
           "category": null,
+          "status": "present",
           "reachable": true,
           "head_sha": "f05e2f41f0a5991c5ef442ff3f764830ce9eb0db",
           "pushed_at": "2026-06-08T01:36:00Z",
@@ -620,6 +682,7 @@
           "owner": "kody-w",
           "layer": "uncataloged",
           "category": "run a brainstem",
+          "status": "present",
           "reachable": true,
           "head_sha": "ebed9f2768a101b54806d60c81adec36adc9600d",
           "pushed_at": "2026-06-04T22:18:22Z",
@@ -631,10 +694,9 @@
           "owner": "kody-w",
           "layer": "leviathan",
           "category": null,
+          "status": "absent",
           "reachable": false,
-          "head_sha": null,
-          "pushed_at": null,
-          "created_at": null
+          "head_sha": null
         }
       ],
       "born": [],
@@ -643,55 +705,84 @@
     "vitals": {
       "sync": {
         "source": "sweeps/latest.json",
-        "swept_at": "2026-07-08T00:00:00Z",
-        "verdict": "DRIFT-FOUND",
-        "findings": 13,
-        "high": 3,
-        "issues_filed": 13,
-        "reconciliation": "in-flight",
+        "swept_at": "2026-07-14T00:00:00Z",
+        "verdict": "RECONCILED",
+        "findings": 7,
+        "high": 2,
+        "issues_filed": 3,
+        "reconciliation": "complete",
         "plan": "PLAN-drift-immunity"
       },
       "drift_issues": {
-        "open": 1,
+        "open": 0,
         "by_severity": {
           "high": 0,
           "medium": 0,
           "low": 0,
-          "unspecified": 1
+          "unspecified": 0
         },
-        "oldest_opened": "2026-07-08T23:09:42Z"
+        "oldest_opened": null
       },
       "mirrors_identical": true,
       "last_sweep": {
-        "swept_at": "2026-07-08T00:00:00Z",
-        "verdict": "DRIFT-FOUND"
+        "swept_at": "2026-07-14T00:00:00Z",
+        "verdict": "RECONCILED"
       }
     },
     "events": [
       {
-        "type": "heartbeat",
-        "text": "weekly liveness pulse \u2014 the body is alive even when nothing changed."
+        "type": "race-verdict",
+        "race": "0001",
+        "race_class": "DOG-only (bones, no vault) — public lanes, marked per the race privacy law",
+        "problem": "Where should the standing guard stand? Name the ecosystem's single greatest present drift risk and the one guard that catches it earliest.",
+        "lanes": {
+          "exhibition": [
+            0,
+            16,
+            20
+          ],
+          "scored": [
+            21,
+            23,
+            24,
+            "presence"
+          ]
+        },
+        "scores": {
+          "21": 24,
+          "23": 19,
+          "24": 28,
+          "presence": 26
+        },
+        "score_max": 30,
+        "winner": {
+          "frame": 24,
+          "guard": "waiver-freshness watchdog — every waiver pins the sha256 of the exact canon passage it cites; any canon change re-hashes all pins and auto-reopens stale-masked findings at the very commit that stales them"
+        },
+        "runner_up": {
+          "lane": "presence",
+          "guard": "pre-append frame gate on the pulse — verify-chain, lexicon pin, census presence, and the golden drift classes checked at write time, because on an append-only spine write time is the only moment prevention exists"
+        },
+        "exhibition_honors": {
+          "earliest_catch": 0,
+          "correctness": 16,
+          "durability": 20
+        },
+        "judging": "three blind lenses — earliest-catch, correctness-and-evidence, cost-simplicity-durability (the third judged by a different frontier model); lanes anonymized, era references redacted",
+        "insight": "The genesis self beat the present self: only frame 24 knew its own waivers existed, and that knowledge produced the winning guard — direct evidence that the immune-system memory added at genesis strengthened the body. The mid-reconciliation self (frame 23) scored lowest of the witnessed lanes: its era's fixation aged into the costliest guard. Exhibition: the 2026-06-03 self correctly diagnosed its own era's identity law as brittle by construction — a defect the body only ruled illegal a month later. The verdict feeds Movement VI: build the waiver-freshness watchdog first, the pre-append gate second.",
+        "artifacts": "races/0001/ in this repo — the full anonymized judging pack, all three judge verdicts, the lane key, and lane answers (publishable because the race was DOG-only)",
+        "text": "First race complete — the tail enters the mouth. Seven selves of the body, cradle to now, raced one present problem in parallel: DOG-only Resurrection lanes (era body, present mind), judged blind through three lenses. Winner: the genesis self (frame 24), waiver-freshness watchdog, 28/30. Runner-up: the present self's pre-append frame gate, 26/30. The biography's first entry authored by racing the biography against itself."
       },
       {
-        "type": "observation-gap",
-        "source": "repo:kody-w/rapp_kernel",
-        "detail": "metadata unreadable (HTTP 404)"
-      },
-      {
-        "type": "observation-gap",
-        "source": "repo:kody-w/rapp_leviathan_factory",
-        "detail": "metadata unreadable (HTTP 404)"
-      },
-      {
-        "type": "observation-gap",
-        "source": "repo:kody-w/wrap_leviathan",
-        "detail": "metadata unreadable (HTTP 404)"
+        "type": "heads-advanced",
+        "repos": [
+          "rappterbook"
+        ],
+        "text": "1 organ(s) advanced their default branch since the last frame: rappterbook."
       }
     ]
   },
-  "payload_hash": "aea322ea9a77dfa4348c53ae4e0769b6ea61cb559749ed4ca332f0758177adee",
-  "prev": "24fe782f3fe9198fd8068c76e9023878fab0d349f5e408711676264b1a21a64b",
-  "prev_wave": null,
-  "sig": null,
-  "frame_hash": "1df936922c86b4254169742eec4ffef8784e43681836a81a991b272c1d846905"
+  "sha256": "13120453768523d9b8f6faf55993d640e7fe51f4fe333af1dd1ab107a6351d6d",
+  "parent_sha": "6dfe755a3283fcc44accbe199de29709f33533a5eeba31f67b80acc624dd7b40",
+  "sig": null
 }

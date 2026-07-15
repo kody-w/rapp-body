@@ -1,15 +1,16 @@
 {
-  "spec": "rapp/1",
-  "kind": "body.pulse-reconstructed",
-  "stream_id": "rappid:@kody-w/rapp-body:817839d299ddfb173097c58a0434c5c1ef5cd2cd55086c46cfe728bf9bfeb657",
-  "seq": 14,
-  "utc": "2026-05-27T00:00:00.000Z",
+  "spec": "rapp-frame/2.0",
+  "kind": "body.pulse.reconstructed",
+  "seq": 15,
+  "ts": "2026-06-02T00:00:00Z",
+  "twin_id": "rappid:@kody-w/rapp-body:324197c16e7e0ca78e19f8a4e1aef76ed34b6694527bb566753c4c89a8ba71f6",
+  "kernel_version": "0.6.0",
   "payload": {
-    "taken_ts": "2026-05-27T00:00:00Z",
+    "taken_ts": "2026-06-02T00:00:00Z",
     "provenance": {
       "mode": "reconstructed",
       "evidence": [
-        "created_at (GitHub API) for: rapp-static-apis, rapp-carts, racon, rio, rapp-god-forum, rapp-resident, rionet, rapp-vneighborhood"
+        "created_at (GitHub API) for: rapp-mcp"
       ]
     },
     "skeleton": {
@@ -32,8 +33,8 @@
       }
     },
     "census": {
-      "basis": "reconstructed: repos with created_at <= 2026-05-27 (partial; 3 cataloged repo(s) unreachable at reconstruction time and therefore undated)",
-      "count": 40,
+      "basis": "reconstructed: repos with created_at <= 2026-06-02 (partial; 3 cataloged repo(s) unreachable at reconstruction time and therefore undated)",
+      "count": 41,
       "repos": [
         {
           "name": "CommunityRAPP",
@@ -65,7 +66,7 @@
           "layer": "uncataloged",
           "category": "mcp & cartridges",
           "created_at": "2026-05-26T17:42:52Z",
-          "born_this_frame": true
+          "born_this_frame": false
         },
         {
           "name": "RAPP",
@@ -105,7 +106,7 @@
           "layer": "distribution",
           "category": "mcp & cartridges",
           "created_at": "2026-05-26T17:42:49Z",
-          "born_this_frame": true
+          "born_this_frame": false
         },
         {
           "name": "rapp-commons",
@@ -161,7 +162,7 @@
           "layer": "uncataloged",
           "category": "front doors & neighborhoods",
           "created_at": "2026-05-26T20:46:09Z",
-          "born_this_frame": true
+          "born_this_frame": false
         },
         {
           "name": "rapp-installer",
@@ -204,6 +205,14 @@
           "born_this_frame": false
         },
         {
+          "name": "rapp-mcp",
+          "owner": "kody-w",
+          "layer": "network",
+          "category": "mcp & cartridges",
+          "created_at": "2026-06-02T22:16:20Z",
+          "born_this_frame": true
+        },
+        {
           "name": "rapp-neighborhood-protocol",
           "owner": "kody-w",
           "layer": "network",
@@ -225,7 +234,7 @@
           "layer": "network",
           "category": "front doors & neighborhoods",
           "created_at": "2026-05-26T20:47:21Z",
-          "born_this_frame": true
+          "born_this_frame": false
         },
         {
           "name": "rapp-sealed",
@@ -241,7 +250,7 @@
           "layer": "distribution",
           "category": "identity & registry",
           "created_at": "2026-05-26T01:32:53Z",
-          "born_this_frame": true
+          "born_this_frame": false
         },
         {
           "name": "rapp-vneighborhood",
@@ -249,7 +258,7 @@
           "layer": "network",
           "category": "front doors & neighborhoods",
           "created_at": "2026-05-27T16:44:31Z",
-          "born_this_frame": true
+          "born_this_frame": false
         },
         {
           "name": "rapp-vscode-extension",
@@ -329,7 +338,7 @@
           "layer": "uncataloged",
           "category": "the agent-built web",
           "created_at": "2026-05-26T19:30:43Z",
-          "born_this_frame": true
+          "born_this_frame": false
         },
         {
           "name": "rionet",
@@ -337,7 +346,7 @@
           "layer": "uncataloged",
           "category": "the agent-built web",
           "created_at": "2026-05-27T01:46:51Z",
-          "born_this_frame": true
+          "born_this_frame": false
         },
         {
           "name": "twin-egg-hatcher",
@@ -357,14 +366,7 @@
         }
       ],
       "born": [
-        "rapp-static-apis",
-        "rapp-carts",
-        "racon",
-        "rio",
-        "rapp-god-forum",
-        "rapp-resident",
-        "rionet",
-        "rapp-vneighborhood"
+        "rapp-mcp"
       ],
       "vanished": []
     },
@@ -378,21 +380,12 @@
       {
         "type": "birth",
         "repos": [
-          "rapp-static-apis",
-          "rapp-carts",
-          "racon",
-          "rio",
-          "rapp-god-forum",
-          "rapp-resident",
-          "rionet",
-          "rapp-vneighborhood"
+          "rapp-mcp"
         ]
       }
     ]
   },
-  "payload_hash": "8653faa1a69a328cf9da661500e134ef63d13edf9e7089816c288fa8b4119f55",
-  "prev": "42412814d20189047b1b914d3d7d9c8d1b688b7945a05df86de0e55c7b355cc0",
-  "prev_wave": null,
-  "sig": null,
-  "frame_hash": "25b181bbe0c45aee95d78550a4aae5ca18b088a3d48d4a524e60c748c18fcf48"
+  "sha256": "29b96e123d27cd5f96b1e2dde29b83655df04af028c5b30d87506e61061e8e50",
+  "parent_sha": "e7f7a89529d14997f8f944f6ad33ac5793cdcbac4afd8824fea370f54cd72dd7",
+  "sig": null
 }

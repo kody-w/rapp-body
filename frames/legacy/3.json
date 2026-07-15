@@ -1,15 +1,16 @@
 {
-  "spec": "rapp/1",
-  "kind": "body.pulse-reconstructed",
-  "stream_id": "rappid:@kody-w/rapp-body:817839d299ddfb173097c58a0434c5c1ef5cd2cd55086c46cfe728bf9bfeb657",
-  "seq": 7,
-  "utc": "2026-04-17T00:00:00.000Z",
+  "spec": "rapp-frame/2.0",
+  "kind": "body.pulse.reconstructed",
+  "seq": 3,
+  "ts": "2026-01-30T00:00:00Z",
+  "twin_id": "rappid:@kody-w/rapp-body:324197c16e7e0ca78e19f8a4e1aef76ed34b6694527bb566753c4c89a8ba71f6",
+  "kernel_version": "0.6.0",
   "payload": {
-    "taken_ts": "2026-04-17T00:00:00Z",
+    "taken_ts": "2026-01-30T00:00:00Z",
     "provenance": {
       "mode": "reconstructed",
       "evidence": [
-        "created_at (GitHub API) for: RAPPcards"
+        "created_at (GitHub API) for: RAPP_Store, RAPP_Hub, RAPP_Desktop"
       ]
     },
     "skeleton": {
@@ -32,8 +33,8 @@
       }
     },
     "census": {
-      "basis": "reconstructed: repos with created_at <= 2026-04-17 (partial; 3 cataloged repo(s) unreachable at reconstruction time and therefore undated)",
-      "count": 10,
+      "basis": "reconstructed: repos with created_at <= 2026-01-30 (partial; 3 cataloged repo(s) unreachable at reconstruction time and therefore undated)",
+      "count": 6,
       "repos": [
         {
           "name": "CommunityRAPP",
@@ -41,14 +42,6 @@
           "layer": "runtime",
           "category": "memory & social",
           "created_at": "2026-01-15T21:59:11Z",
-          "born_this_frame": false
-        },
-        {
-          "name": "openrappter",
-          "owner": "kody-w",
-          "layer": "runtime",
-          "category": null,
-          "created_at": "2026-02-05T00:44:41Z",
           "born_this_frame": false
         },
         {
@@ -73,7 +66,7 @@
           "layer": "uncataloged",
           "category": "kernel & install",
           "created_at": "2026-01-30T19:51:20Z",
-          "born_this_frame": false
+          "born_this_frame": true
         },
         {
           "name": "RAPP_Hub",
@@ -81,7 +74,7 @@
           "layer": "distribution",
           "category": null,
           "created_at": "2026-01-30T19:39:54Z",
-          "born_this_frame": false
+          "born_this_frame": true
         },
         {
           "name": "RAPP_Store",
@@ -89,35 +82,13 @@
           "layer": "distribution",
           "category": "stores & catalogs",
           "created_at": "2026-01-30T19:28:22Z",
-          "born_this_frame": false
-        },
-        {
-          "name": "RAPPcards",
-          "owner": "kody-w",
-          "layer": "distribution",
-          "category": null,
-          "created_at": "2026-04-17T23:55:03Z",
           "born_this_frame": true
-        },
-        {
-          "name": "rappterbook",
-          "owner": "kody-w",
-          "layer": "leviathan",
-          "category": "memory & social",
-          "created_at": "2026-02-13T01:26:22Z",
-          "born_this_frame": false
-        },
-        {
-          "name": "RAR",
-          "owner": "kody-w",
-          "layer": "distribution",
-          "category": "identity & registry",
-          "created_at": "2026-04-03T15:06:54Z",
-          "born_this_frame": false
         }
       ],
       "born": [
-        "RAPPcards"
+        "RAPP_Store",
+        "RAPP_Hub",
+        "RAPP_Desktop"
       ],
       "vanished": []
     },
@@ -131,14 +102,14 @@
       {
         "type": "birth",
         "repos": [
-          "RAPPcards"
+          "RAPP_Store",
+          "RAPP_Hub",
+          "RAPP_Desktop"
         ]
       }
     ]
   },
-  "payload_hash": "8ada3541f5607573778c2a29d3390050037bca7e758a5213ad48a04aaf4137e0",
-  "prev": "64df9a13ef1499f232e43d300f67c4f0cf768715578a35e8605f59f5d3c6d599",
-  "prev_wave": null,
-  "sig": null,
-  "frame_hash": "e1568688c428fd80fadd30550b33ee8c8fb0ed01fe64f5ee697e87cff3c63c40"
+  "sha256": "a5516147ee001470a7738c4a42fa5ed60cc91c8a09c1482b6cebd6f8860da084",
+  "parent_sha": "5e4fb8bd99354545d0155f19926ebf6742685e71793b7a77bfb9c751e8d90d5e",
+  "sig": null
 }

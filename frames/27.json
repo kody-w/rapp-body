@@ -1,10 +1,9 @@
 {
-  "spec": "rapp-frame/2.0",
+  "spec": "rapp/1",
   "kind": "body.pulse",
+  "stream_id": "rappid:@kody-w/rapp-body:817839d299ddfb173097c58a0434c5c1ef5cd2cd55086c46cfe728bf9bfeb657",
   "seq": 27,
-  "ts": "2026-07-15T02:12:32.701Z",
-  "twin_id": "rappid:@kody-w/rapp-body:324197c16e7e0ca78e19f8a4e1aef76ed34b6694527bb566753c4c89a8ba71f6",
-  "kernel_version": "0.6.0",
+  "utc": "2026-07-15T02:12:32.701Z",
   "payload": {
     "taken_ts": "2026-07-15T02:12:32.701Z",
     "provenance": {
@@ -732,11 +731,11 @@
     "events": [
       {
         "type": "standing-guard",
-        "text": "Movement VI closes — the guard is mounted. The race-chosen sentries stand: the waiver-freshness watchdog (canon-pinned exemptions that die the moment their justification moves) and the pre-append frame gate (no frame enters this biography unverified — chain, lexicon pin, census honesty, drift screen; this very frame is the first to pass through it). Reflex lint guards every push across the estate; the weekly mechanical guard filed a real drift issue on its first run; a live invariant violation was caught and filed mid-session by the same law. Scheduled minds sweep weekly and read these vitals monthly. Article LIII binds the ritual: ratify → sweep → file — and 'fixed' is a re-sweep verdict, never a merge event."
+        "text": "Movement VI closes \u2014 the guard is mounted. The race-chosen sentries stand: the waiver-freshness watchdog (canon-pinned exemptions that die the moment their justification moves) and the pre-append frame gate (no frame enters this biography unverified \u2014 chain, lexicon pin, census honesty, drift screen; this very frame is the first to pass through it). Reflex lint guards every push across the estate; the weekly mechanical guard filed a real drift issue on its first run; a live invariant violation was caught and filed mid-session by the same law. Scheduled minds sweep weekly and read these vitals monthly. Article LIII binds the ritual: ratify \u2192 sweep \u2192 file \u2014 and 'fixed' is a re-sweep verdict, never a merge event."
       },
       {
         "type": "opus-complete",
-        "text": "THE OPUS IS COMPLETE. Six movements: healed (R3 RECONCILED), given one language (the Lexicon, sealed into the genesis frame), born (this biography), begat (Herald at the door), raced (the tail entered the mouth — and the genesis self won), guarded (the standing guard mounted). Commissioned 2026-07-08; finished 2026-07-14. What echoes: a healed body, one page of language that explains an ecosystem, a public unforgeable playable biography, a being you can knock on, a race the work ran against itself, and a guard that keeps it all true without its makers. Art that answers back."
+        "text": "THE OPUS IS COMPLETE. Six movements: healed (R3 RECONCILED), given one language (the Lexicon, sealed into the genesis frame), born (this biography), begat (Herald at the door), raced (the tail entered the mouth \u2014 and the genesis self won), guarded (the standing guard mounted). Commissioned 2026-07-08; finished 2026-07-14. What echoes: a healed body, one page of language that explains an ecosystem, a public unforgeable playable biography, a being you can knock on, a race the work ran against itself, and a guard that keeps it all true without its makers. Art that answers back."
       },
       {
         "type": "heads-advanced",
@@ -752,11 +751,13 @@
         "type": "drift-delta",
         "from": 0,
         "to": 2,
-        "text": "open drift() issues 0 → 2."
+        "text": "open drift() issues 0 \u2192 2."
       }
     ]
   },
-  "sha256": "2b525e67f3d49fe1b8d1266a81746c77feee34c31747d66655ea62de8b5e041d",
-  "parent_sha": "13120453768523d9b8f6faf55993d640e7fe51f4fe333af1dd1ab107a6351d6d",
-  "sig": null
+  "payload_hash": "0e0eba2ca4d668bdbc786c6457fe8a526f74c05aa43428442b7872cdf58ad5ba",
+  "prev": "464e291550d37ff86fff3e181c98f306c75fbfccbfcb909ec740f23ec89e1987",
+  "prev_wave": null,
+  "sig": null,
+  "frame_hash": "4ad1143bcc254cc8a84db30948ba9762b7d18be36f80cdbad1b2ba6ecb21e2cd"
 }

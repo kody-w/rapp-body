@@ -1,10 +1,9 @@
 {
-  "spec": "rapp-frame/2.0",
+  "spec": "rapp/1",
   "kind": "body.pulse",
+  "stream_id": "rappid:@kody-w/rapp-body:817839d299ddfb173097c58a0434c5c1ef5cd2cd55086c46cfe728bf9bfeb657",
   "seq": 24,
-  "ts": "2026-07-15T00:49:24.623Z",
-  "twin_id": "rappid:@kody-w/rapp-body:324197c16e7e0ca78e19f8a4e1aef76ed34b6694527bb566753c4c89a8ba71f6",
-  "kernel_version": "0.6.0",
+  "utc": "2026-07-15T00:49:24.623Z",
   "payload": {
     "taken_ts": "2026-07-15T00:49:24.623Z",
     "lexicon_sha": "c7c10ecba56e02eabc86bf178e9d2134cba8ce50338abc3d4d2e5ff2ef4bd51f",
@@ -735,20 +734,20 @@
     "events": [
       {
         "type": "birth",
-        "text": "The body is born: kody-w/rapp-body publishes today. Cradle-to-now biography — 21 reconstructed frames from git archaeology, witnessed pulses since 2026-07-08 — now public, chained, and verifiable by anyone."
+        "text": "The body is born: kody-w/rapp-body publishes today. Cradle-to-now biography \u2014 21 reconstructed frames from git archaeology, witnessed pulses since 2026-07-08 \u2014 now public, chained, and verifiable by anyone."
       },
       {
         "type": "lexicon-sealed",
         "lexicon_sha": "c7c10ecba56e02eabc86bf178e9d2134cba8ce50338abc3d4d2e5ff2ef4bd51f",
-        "text": "The Lexicon is sealed: LEXICON.md at the species root (Constitution Article LII), sha256 pinned in this frame as lexicon_sha. The body is born speaking a sealed language — Nine Words, one operator, one wire, three shelves, nine rulings."
+        "text": "The Lexicon is sealed: LEXICON.md at the species root (Constitution Article LII), sha256 pinned in this frame as lexicon_sha. The body is born speaking a sealed language \u2014 Nine Words, one operator, one wire, three shelves, nine rulings."
       },
       {
         "type": "heal-complete",
-        "text": "Movement I closes RECONCILED: the R3 full-mesh re-sweep adjudicated 7 findings — 2 fixed and merged upstream, 4 waived with canon citations, 1 detector re-baselined. Gate: zero unexplained drift."
+        "text": "Movement I closes RECONCILED: the R3 full-mesh re-sweep adjudicated 7 findings \u2014 2 fixed and merged upstream, 4 waived with canon citations, 1 detector re-baselined. Gate: zero unexplained drift."
       },
       {
         "type": "immune-system-executable",
-        "text": "The immune system gained an executable memory: golden drift cases with expected rulings and a waiver ledger now live in the map layer — future sweeps validate themselves against fossilized judgment before their verdicts are trusted."
+        "text": "The immune system gained an executable memory: golden drift cases with expected rulings and a waiver ledger now live in the map layer \u2014 future sweeps validate themselves against fossilized judgment before their verdicts are trusted."
       },
       {
         "type": "sweep",
@@ -756,13 +755,13 @@
         "findings": 7,
         "high": 2,
         "issues_filed": 3,
-        "text": "Full-mesh ecosystem sweep: RECONCILED — 7 findings, 2 high. 3 drift() issue(s) filed; reconciliation complete."
+        "text": "Full-mesh ecosystem sweep: RECONCILED \u2014 7 findings, 2 high. 3 drift() issue(s) filed; reconciliation complete."
       },
       {
         "type": "spec-version-change",
         "from": "1.1.0",
         "to": "1.2.0",
-        "text": "ecosystem-spec version 1.1.0 → 1.2.0."
+        "text": "ecosystem-spec version 1.1.0 \u2192 1.2.0."
       },
       {
         "type": "birth",
@@ -796,11 +795,13 @@
         "type": "drift-delta",
         "from": 2,
         "to": 0,
-        "text": "open drift() issues 2 → 0."
+        "text": "open drift() issues 2 \u2192 0."
       }
     ]
   },
-  "sha256": "b7873ea897c83ac6de140005671f815280954f959c75bc3e5159c3ecfbe3d4ac",
-  "parent_sha": "496b13af4e8aa15689fbe136cb7fb2bb2989e90f9592f8d37b09fb8e8b8b9e8c",
-  "sig": null
+  "payload_hash": "c51632aae92b76b2eaea061ad969441b4dfef42100bd8e0abcc43cdd447c868a",
+  "prev": "059be76a6917994b0157f9daee260a94f798231129bf52cd4eb46ddb9f7aa5bf",
+  "prev_wave": null,
+  "sig": null,
+  "frame_hash": "704337ba474c80f8c4979ea7b9d8b56bbdc70086b98295c33041fc1500981f5e"
 }

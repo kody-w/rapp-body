@@ -1,9 +1,10 @@
 {
-  "spec": "rapp/1",
+  "spec": "rapp-frame/2.0",
   "kind": "body.pulse",
-  "stream_id": "rappid:@kody-w/rapp-body:817839d299ddfb173097c58a0434c5c1ef5cd2cd55086c46cfe728bf9bfeb657",
   "seq": 22,
-  "utc": "2026-07-08T23:24:35.633Z",
+  "ts": "2026-07-08T23:24:35.633Z",
+  "twin_id": "rappid:@kody-w/rapp-body:324197c16e7e0ca78e19f8a4e1aef76ed34b6694527bb566753c4c89a8ba71f6",
+  "kernel_version": "0.6.0",
   "payload": {
     "taken_ts": "2026-07-08T23:24:35.633Z",
     "provenance": {
@@ -670,7 +671,7 @@
     "events": [
       {
         "type": "heartbeat",
-        "text": "weekly liveness pulse \u2014 the body is alive even when nothing changed."
+        "text": "weekly liveness pulse — the body is alive even when nothing changed."
       },
       {
         "type": "observation-gap",
@@ -689,9 +690,7 @@
       }
     ]
   },
-  "payload_hash": "aea322ea9a77dfa4348c53ae4e0769b6ea61cb559749ed4ca332f0758177adee",
-  "prev": "24fe782f3fe9198fd8068c76e9023878fab0d349f5e408711676264b1a21a64b",
-  "prev_wave": null,
-  "sig": null,
-  "frame_hash": "1df936922c86b4254169742eec4ffef8784e43681836a81a991b272c1d846905"
+  "sha256": "1793ae53d56f3b16a48a81d117612bb41b93a1eea00e05a2c4ee3a12e93ad0ee",
+  "parent_sha": "99bd52ee4a03f9f4eb4b565f3ddc0a6c65511eb7191890ec49a786f2a55fe7f3",
+  "sig": null
 }

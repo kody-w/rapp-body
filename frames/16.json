@@ -1,17 +1,16 @@
 {
-  "spec": "rapp-frame/2.0",
-  "kind": "body.pulse.reconstructed",
+  "spec": "rapp/1",
+  "kind": "body.pulse-reconstructed",
+  "stream_id": "rappid:@kody-w/rapp-body:817839d299ddfb173097c58a0434c5c1ef5cd2cd55086c46cfe728bf9bfeb657",
   "seq": 16,
-  "ts": "2026-06-03T00:00:00Z",
-  "twin_id": "rappid:@kody-w/rapp-body:324197c16e7e0ca78e19f8a4e1aef76ed34b6694527bb566753c4c89a8ba71f6",
-  "kernel_version": "0.6.0",
+  "utc": "2026-06-03T00:00:00.000Z",
   "payload": {
     "taken_ts": "2026-06-03T00:00:00Z",
     "provenance": {
       "mode": "reconstructed",
       "evidence": [
         "ecosystem-spec.identity_format @ https://raw.githubusercontent.com/kody-w/rapp-map/main/ecosystem-spec.json",
-        "\"Eternity rappid:@<owner>/<slug>:<64hex>  (sha256 of '<owner>/<slug>'; kind lives in the re…\""
+        "\"Eternity rappid:@<owner>/<slug>:<64hex>  (sha256 of '<owner>/<slug>'; kind lives in the re\u2026\""
       ]
     },
     "skeleton": {
@@ -379,11 +378,13 @@
       {
         "type": "canon",
         "id": "eternity-ratified",
-        "text": "rapp-eternity/1.0 ratified: Eternity identity locked (CONSTITUTION Art. XXXIV.1) — a rappid is sha256('<owner>/<slug>'). The body's own identity derives from this rule."
+        "text": "rapp-eternity/1.0 ratified: Eternity identity locked (CONSTITUTION Art. XXXIV.1) \u2014 a rappid is sha256('<owner>/<slug>'). The body's own identity derives from this rule."
       }
     ]
   },
-  "sha256": "01d40d7873c6c24206ca1ca55f18e764130bbd84116844366c3469337324f1d7",
-  "parent_sha": "29b96e123d27cd5f96b1e2dde29b83655df04af028c5b30d87506e61061e8e50",
-  "sig": null
+  "payload_hash": "21359bd5afa00b526bb35deb6e4ba16cb047ee9c3aa53dddd89e7309a55f067f",
+  "prev": "74f06b3640ec02f83664dbfa12e0d703c583b0efd2ecdd7534671cb134849774",
+  "prev_wave": null,
+  "sig": null,
+  "frame_hash": "f748c6b0c7ebd92f7266e72b404f8bf22a9c7181eb1c66fe0e623a5e0df3aaf0"
 }

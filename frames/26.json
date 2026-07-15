@@ -1,10 +1,9 @@
 {
-  "spec": "rapp-frame/2.0",
+  "spec": "rapp/1",
   "kind": "body.pulse",
+  "stream_id": "rappid:@kody-w/rapp-body:817839d299ddfb173097c58a0434c5c1ef5cd2cd55086c46cfe728bf9bfeb657",
   "seq": 26,
-  "ts": "2026-07-15T01:41:53.343Z",
-  "twin_id": "rappid:@kody-w/rapp-body:324197c16e7e0ca78e19f8a4e1aef76ed34b6694527bb566753c4c89a8ba71f6",
-  "kernel_version": "0.6.0",
+  "utc": "2026-07-15T01:41:53.343Z",
   "payload": {
     "taken_ts": "2026-07-15T01:41:53.343Z",
     "provenance": {
@@ -733,7 +732,7 @@
       {
         "type": "race-verdict",
         "race": "0001",
-        "race_class": "DOG-only (bones, no vault) — public lanes, marked per the race privacy law",
+        "race_class": "DOG-only (bones, no vault) \u2014 public lanes, marked per the race privacy law",
         "problem": "Where should the standing guard stand? Name the ecosystem's single greatest present drift risk and the one guard that catches it earliest.",
         "lanes": {
           "exhibition": [
@@ -757,21 +756,21 @@
         "score_max": 30,
         "winner": {
           "frame": 24,
-          "guard": "waiver-freshness watchdog — every waiver pins the sha256 of the exact canon passage it cites; any canon change re-hashes all pins and auto-reopens stale-masked findings at the very commit that stales them"
+          "guard": "waiver-freshness watchdog \u2014 every waiver pins the sha256 of the exact canon passage it cites; any canon change re-hashes all pins and auto-reopens stale-masked findings at the very commit that stales them"
         },
         "runner_up": {
           "lane": "presence",
-          "guard": "pre-append frame gate on the pulse — verify-chain, lexicon pin, census presence, and the golden drift classes checked at write time, because on an append-only spine write time is the only moment prevention exists"
+          "guard": "pre-append frame gate on the pulse \u2014 verify-chain, lexicon pin, census presence, and the golden drift classes checked at write time, because on an append-only spine write time is the only moment prevention exists"
         },
         "exhibition_honors": {
           "earliest_catch": 0,
           "correctness": 16,
           "durability": 20
         },
-        "judging": "three blind lenses — earliest-catch, correctness-and-evidence, cost-simplicity-durability (the third judged by a different frontier model); lanes anonymized, era references redacted",
-        "insight": "The genesis self beat the present self: only frame 24 knew its own waivers existed, and that knowledge produced the winning guard — direct evidence that the immune-system memory added at genesis strengthened the body. The mid-reconciliation self (frame 23) scored lowest of the witnessed lanes: its era's fixation aged into the costliest guard. Exhibition: the 2026-06-03 self correctly diagnosed its own era's identity law as brittle by construction — a defect the body only ruled illegal a month later. The verdict feeds Movement VI: build the waiver-freshness watchdog first, the pre-append gate second.",
-        "artifacts": "races/0001/ in this repo — the full anonymized judging pack, all three judge verdicts, the lane key, and lane answers (publishable because the race was DOG-only)",
-        "text": "First race complete — the tail enters the mouth. Seven selves of the body, cradle to now, raced one present problem in parallel: DOG-only Resurrection lanes (era body, present mind), judged blind through three lenses. Winner: the genesis self (frame 24), waiver-freshness watchdog, 28/30. Runner-up: the present self's pre-append frame gate, 26/30. The biography's first entry authored by racing the biography against itself."
+        "judging": "three blind lenses \u2014 earliest-catch, correctness-and-evidence, cost-simplicity-durability (the third judged by a different frontier model); lanes anonymized, era references redacted",
+        "insight": "The genesis self beat the present self: only frame 24 knew its own waivers existed, and that knowledge produced the winning guard \u2014 direct evidence that the immune-system memory added at genesis strengthened the body. The mid-reconciliation self (frame 23) scored lowest of the witnessed lanes: its era's fixation aged into the costliest guard. Exhibition: the 2026-06-03 self correctly diagnosed its own era's identity law as brittle by construction \u2014 a defect the body only ruled illegal a month later. The verdict feeds Movement VI: build the waiver-freshness watchdog first, the pre-append gate second.",
+        "artifacts": "races/0001/ in this repo \u2014 the full anonymized judging pack, all three judge verdicts, the lane key, and lane answers (publishable because the race was DOG-only)",
+        "text": "First race complete \u2014 the tail enters the mouth. Seven selves of the body, cradle to now, raced one present problem in parallel: DOG-only Resurrection lanes (era body, present mind), judged blind through three lenses. Winner: the genesis self (frame 24), waiver-freshness watchdog, 28/30. Runner-up: the present self's pre-append frame gate, 26/30. The biography's first entry authored by racing the biography against itself."
       },
       {
         "type": "heads-advanced",
@@ -782,7 +781,9 @@
       }
     ]
   },
-  "sha256": "13120453768523d9b8f6faf55993d640e7fe51f4fe333af1dd1ab107a6351d6d",
-  "parent_sha": "6dfe755a3283fcc44accbe199de29709f33533a5eeba31f67b80acc624dd7b40",
-  "sig": null
+  "payload_hash": "464e291550d37ff86fff3e181c98f306c75fbfccbfcb909ec740f23ec89e1987",
+  "prev": "fb54dacd1833a39e5d74c3f6546d6ddd151826ca1bdca55f6c6d1e95214c4c1a",
+  "prev_wave": null,
+  "sig": null,
+  "frame_hash": "6da8f0033fb943dcc75d8b2418cba668f7344025011a3040db7e6af31b624285"
 }

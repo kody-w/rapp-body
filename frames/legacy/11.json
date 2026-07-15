@@ -1,15 +1,16 @@
 {
-  "spec": "rapp/1",
-  "kind": "body.pulse-reconstructed",
-  "stream_id": "rappid:@kody-w/rapp-body:817839d299ddfb173097c58a0434c5c1ef5cd2cd55086c46cfe728bf9bfeb657",
-  "seq": 10,
-  "utc": "2026-05-11T00:00:00.000Z",
+  "spec": "rapp-frame/2.0",
+  "kind": "body.pulse.reconstructed",
+  "seq": 11,
+  "ts": "2026-05-18T00:00:00Z",
+  "twin_id": "rappid:@kody-w/rapp-body:324197c16e7e0ca78e19f8a4e1aef76ed34b6694527bb566753c4c89a8ba71f6",
+  "kernel_version": "0.6.0",
   "payload": {
-    "taken_ts": "2026-05-11T00:00:00Z",
+    "taken_ts": "2026-05-18T00:00:00Z",
     "provenance": {
       "mode": "reconstructed",
       "evidence": [
-        "created_at (GitHub API) for: rapp-estate, rapp-commons"
+        "created_at (GitHub API) for: rapp-leviathan-hub, twin-egg-hatcher"
       ]
     },
     "skeleton": {
@@ -32,8 +33,8 @@
       }
     },
     "census": {
-      "basis": "reconstructed: repos with created_at <= 2026-05-11 (partial; 3 cataloged repo(s) unreachable at reconstruction time and therefore undated)",
-      "count": 16,
+      "basis": "reconstructed: repos with created_at <= 2026-05-18 (partial; 3 cataloged repo(s) unreachable at reconstruction time and therefore undated)",
+      "count": 18,
       "repos": [
         {
           "name": "CommunityRAPP",
@@ -73,7 +74,7 @@
           "layer": "network",
           "category": "front doors & neighborhoods",
           "created_at": "2026-05-11T17:49:07Z",
-          "born_this_frame": true
+          "born_this_frame": false
         },
         {
           "name": "rapp-egg-hub",
@@ -89,7 +90,7 @@
           "layer": "network",
           "category": "identity & registry",
           "created_at": "2026-05-09T23:54:41Z",
-          "born_this_frame": true
+          "born_this_frame": false
         },
         {
           "name": "rapp-installer",
@@ -98,6 +99,14 @@
           "category": "kernel & install",
           "created_at": "2026-01-22T00:38:37Z",
           "born_this_frame": false
+        },
+        {
+          "name": "rapp-leviathan-hub",
+          "owner": "kody-w",
+          "layer": "distribution",
+          "category": null,
+          "created_at": "2026-05-17T15:12:05Z",
+          "born_this_frame": true
         },
         {
           "name": "RAPP_Desktop",
@@ -162,11 +171,19 @@
           "category": "identity & registry",
           "created_at": "2026-04-03T15:06:54Z",
           "born_this_frame": false
+        },
+        {
+          "name": "twin-egg-hatcher",
+          "owner": "kody-w",
+          "layer": "distribution",
+          "category": null,
+          "created_at": "2026-05-18T20:03:32Z",
+          "born_this_frame": true
         }
       ],
       "born": [
-        "rapp-estate",
-        "rapp-commons"
+        "rapp-leviathan-hub",
+        "twin-egg-hatcher"
       ],
       "vanished": []
     },
@@ -180,15 +197,13 @@
       {
         "type": "birth",
         "repos": [
-          "rapp-estate",
-          "rapp-commons"
+          "rapp-leviathan-hub",
+          "twin-egg-hatcher"
         ]
       }
     ]
   },
-  "payload_hash": "997297b8257096c8cee4425810a2fb21f8ca4d6bdf50ee2bfe643ed2c80182a2",
-  "prev": "7e72868211d4a168eee722be6263b87ad1d6252da7294aaf90c9a328da653683",
-  "prev_wave": null,
-  "sig": null,
-  "frame_hash": "8de8e252976caa564b0ca129a7ee0cf344edf1fed1dca988442912fbfb1d1be4"
+  "sha256": "831bb58e02da5ba1fc7455a134caf6861d53b2438e38f654561755a1edb23588",
+  "parent_sha": "ba5be06c7b4ea53779ef0c8fb87f71c4977c2cace369fc2a4a11e242dde63e6e",
+  "sig": null
 }

@@ -1,10 +1,9 @@
 {
-  "spec": "rapp-frame/2.0",
+  "spec": "rapp/1",
   "kind": "body.pulse",
+  "stream_id": "rappid:@kody-w/rapp-body:817839d299ddfb173097c58a0434c5c1ef5cd2cd55086c46cfe728bf9bfeb657",
   "seq": 21,
-  "ts": "2026-07-08T23:24:20.283Z",
-  "twin_id": "rappid:@kody-w/rapp-body:324197c16e7e0ca78e19f8a4e1aef76ed34b6694527bb566753c4c89a8ba71f6",
-  "kernel_version": "0.6.0",
+  "utc": "2026-07-08T23:24:20.283Z",
   "payload": {
     "taken_ts": "2026-07-08T23:24:20.283Z",
     "provenance": {
@@ -675,7 +674,7 @@
       },
       {
         "type": "biography-born",
-        "text": "kody-w/rapp-body born — the organism's own public, sha256-chained biography (rapp-frame/2.0), the same organ a twin carries, now at ecosystem scale."
+        "text": "kody-w/rapp-body born \u2014 the organism's own public, sha256-chained biography (rapp-frame/2.0), the same organ a twin carries, now at ecosystem scale."
       },
       {
         "type": "immune-system",
@@ -687,7 +686,7 @@
         "findings": 13,
         "high": 3,
         "issues_filed": 13,
-        "text": "Full-mesh ecosystem sweep: DRIFT-FOUND — 13 findings, 3 high. 13 drift() issue(s) filed; reconciliation in-flight."
+        "text": "Full-mesh ecosystem sweep: DRIFT-FOUND \u2014 13 findings, 3 high. 13 drift() issue(s) filed; reconciliation in-flight."
       },
       {
         "type": "observation-gap",
@@ -706,7 +705,9 @@
       }
     ]
   },
-  "sha256": "99bd52ee4a03f9f4eb4b565f3ddc0a6c65511eb7191890ec49a786f2a55fe7f3",
-  "parent_sha": "179d6e124917785f538eb77e3e355a99df3c657b0287e615c45ea72bf8fb4f0b",
-  "sig": null
+  "payload_hash": "24fe782f3fe9198fd8068c76e9023878fab0d349f5e408711676264b1a21a64b",
+  "prev": "d807db0eb62787df983e1a4b11f98f4092ab4763e727c3e6cad8e3a033e93359",
+  "prev_wave": null,
+  "sig": null,
+  "frame_hash": "5cb851dc65f5ae55f3879d436c133b66bf325eeb21cdef7442d2ff326629d520"
 }

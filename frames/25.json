@@ -1,10 +1,9 @@
 {
-  "spec": "rapp-frame/2.0",
+  "spec": "rapp/1",
   "kind": "body.pulse",
+  "stream_id": "rappid:@kody-w/rapp-body:817839d299ddfb173097c58a0434c5c1ef5cd2cd55086c46cfe728bf9bfeb657",
   "seq": 25,
-  "ts": "2026-07-15T01:24:58.731Z",
-  "twin_id": "rappid:@kody-w/rapp-body:324197c16e7e0ca78e19f8a4e1aef76ed34b6694527bb566753c4c89a8ba71f6",
-  "kernel_version": "0.6.0",
+  "utc": "2026-07-15T01:24:58.731Z",
   "payload": {
     "taken_ts": "2026-07-15T01:24:58.731Z",
     "provenance": {
@@ -732,7 +731,7 @@
     "events": [
       {
         "type": "begetting",
-        "text": "First begetting: Herald, the body's doorman, is posted at the door — door/index.html. Hatched from the genesis frame (seq 24) with born_of_frame stamped in its record: the first constructor pin ever minted. The pin is checkable — fetch frames/24.json, recompute the sha256, and you hold proof of exactly which moment of the body Herald derives from.",
+        "text": "First begetting: Herald, the body's doorman, is posted at the door \u2014 door/index.html. Hatched from the genesis frame (seq 24) with born_of_frame stamped in its record: the first constructor pin ever minted. The pin is checkable \u2014 fetch frames/24.json, recompute the sha256, and you hold proof of exactly which moment of the body Herald derives from.",
         "rappid": "rappid:@kody-w/rapp-body:97d5b1504ee1fd397221fd1800cc98c7bf0464faff555020d327a59354a96f33",
         "born_of_frame": {
           "seq": 24,
@@ -741,11 +740,13 @@
       },
       {
         "type": "door-open",
-        "text": "The biography can now be spoken to, not just watched: a stranger opens the door URL, asks the body about its own life, and Herald answers from the frames — receipts on every claim, 'my biography doesn't record that' when they are silent, and escalation to a visitor's own brainstem by the one operator: derive the public frames, overlay their session."
+        "text": "The biography can now be spoken to, not just watched: a stranger opens the door URL, asks the body about its own life, and Herald answers from the frames \u2014 receipts on every claim, 'my biography doesn't record that' when they are silent, and escalation to a visitor's own brainstem by the one operator: derive the public frames, overlay their session."
       }
     ]
   },
-  "sha256": "6dfe755a3283fcc44accbe199de29709f33533a5eeba31f67b80acc624dd7b40",
-  "parent_sha": "b7873ea897c83ac6de140005671f815280954f959c75bc3e5159c3ecfbe3d4ac",
-  "sig": null
+  "payload_hash": "fb54dacd1833a39e5d74c3f6546d6ddd151826ca1bdca55f6c6d1e95214c4c1a",
+  "prev": "c51632aae92b76b2eaea061ad969441b4dfef42100bd8e0abcc43cdd447c868a",
+  "prev_wave": null,
+  "sig": null,
+  "frame_hash": "5cd6774d92a631c176b42bf06291464fb4dfc1f82d12f9233f326fdc62fdc394"
 }

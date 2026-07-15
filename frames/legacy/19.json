@@ -1,15 +1,18 @@
 {
-  "spec": "rapp/1",
-  "kind": "body.pulse-reconstructed",
-  "stream_id": "rappid:@kody-w/rapp-body:817839d299ddfb173097c58a0434c5c1ef5cd2cd55086c46cfe728bf9bfeb657",
-  "seq": 14,
-  "utc": "2026-05-27T00:00:00.000Z",
+  "spec": "rapp-frame/2.0",
+  "kind": "body.pulse.reconstructed",
+  "seq": 19,
+  "ts": "2026-06-29T00:00:00Z",
+  "twin_id": "rappid:@kody-w/rapp-body:324197c16e7e0ca78e19f8a4e1aef76ed34b6694527bb566753c4c89a8ba71f6",
+  "kernel_version": "0.6.0",
   "payload": {
-    "taken_ts": "2026-05-27T00:00:00Z",
+    "taken_ts": "2026-06-29T00:00:00Z",
     "provenance": {
       "mode": "reconstructed",
       "evidence": [
-        "created_at (GitHub API) for: rapp-static-apis, rapp-carts, racon, rio, rapp-god-forum, rapp-resident, rionet, rapp-vneighborhood"
+        "created_at (GitHub API) for: leviathan, rapp-spine, rapp-roadmap, rapp-frame-net, rapp-distro, rapp-eternity, rapp-burrow",
+        "rapp-spine registry.json.generated=2026-06-28 @ https://raw.githubusercontent.com/kody-w/rapp-spine/main/registry.json",
+        "rapp-spine foundation.json @ https://raw.githubusercontent.com/kody-w/rapp-spine/main/foundation.json"
       ]
     },
     "skeleton": {
@@ -32,8 +35,8 @@
       }
     },
     "census": {
-      "basis": "reconstructed: repos with created_at <= 2026-05-27 (partial; 3 cataloged repo(s) unreachable at reconstruction time and therefore undated)",
-      "count": 40,
+      "basis": "reconstructed: repos with created_at <= 2026-06-29 (partial; 3 cataloged repo(s) unreachable at reconstruction time and therefore undated)",
+      "count": 51,
       "repos": [
         {
           "name": "CommunityRAPP",
@@ -52,6 +55,14 @@
           "born_this_frame": false
         },
         {
+          "name": "leviathan",
+          "owner": "kody-w",
+          "layer": "leviathan",
+          "category": null,
+          "created_at": "2026-06-28T15:20:37Z",
+          "born_this_frame": true
+        },
+        {
           "name": "openrappter",
           "owner": "kody-w",
           "layer": "runtime",
@@ -65,7 +76,7 @@
           "layer": "uncataloged",
           "category": "mcp & cartridges",
           "created_at": "2026-05-26T17:42:52Z",
-          "born_this_frame": true
+          "born_this_frame": false
         },
         {
           "name": "RAPP",
@@ -100,12 +111,20 @@
           "born_this_frame": false
         },
         {
+          "name": "rapp-burrow",
+          "owner": "kody-w",
+          "layer": "distribution",
+          "category": null,
+          "created_at": "2026-06-29T16:22:12Z",
+          "born_this_frame": true
+        },
+        {
           "name": "rapp-carts",
           "owner": "kody-w",
           "layer": "distribution",
           "category": "mcp & cartridges",
           "created_at": "2026-05-26T17:42:49Z",
-          "born_this_frame": true
+          "born_this_frame": false
         },
         {
           "name": "rapp-commons",
@@ -116,12 +135,28 @@
           "born_this_frame": false
         },
         {
+          "name": "rapp-dataverse",
+          "owner": "kody-w",
+          "layer": "runtime",
+          "category": null,
+          "created_at": "2026-06-17T14:39:09Z",
+          "born_this_frame": false
+        },
+        {
           "name": "rapp-demos",
           "owner": "kody-w",
           "layer": "distribution",
           "category": null,
           "created_at": "2026-05-26T00:48:48Z",
           "born_this_frame": false
+        },
+        {
+          "name": "rapp-distro",
+          "owner": "kody-w",
+          "layer": "kernel",
+          "category": null,
+          "created_at": "2026-06-28T21:05:35Z",
+          "born_this_frame": true
         },
         {
           "name": "rapp-doorman",
@@ -148,6 +183,22 @@
           "born_this_frame": false
         },
         {
+          "name": "rapp-eternity",
+          "owner": "kody-w",
+          "layer": "kernel",
+          "category": "identity & registry",
+          "created_at": "2026-06-28T21:20:45Z",
+          "born_this_frame": true
+        },
+        {
+          "name": "rapp-frame-net",
+          "owner": "kody-w",
+          "layer": "leviathan",
+          "category": null,
+          "created_at": "2026-06-28T17:35:48Z",
+          "born_this_frame": true
+        },
+        {
           "name": "rapp-god",
           "owner": "kody-w",
           "layer": "map",
@@ -161,7 +212,7 @@
           "layer": "uncataloged",
           "category": "front doors & neighborhoods",
           "created_at": "2026-05-26T20:46:09Z",
-          "born_this_frame": true
+          "born_this_frame": false
         },
         {
           "name": "rapp-installer",
@@ -204,6 +255,22 @@
           "born_this_frame": false
         },
         {
+          "name": "rapp-mcp",
+          "owner": "kody-w",
+          "layer": "network",
+          "category": "mcp & cartridges",
+          "created_at": "2026-06-02T22:16:20Z",
+          "born_this_frame": false
+        },
+        {
+          "name": "rapp-moment",
+          "owner": "kody-w",
+          "layer": "identity",
+          "category": null,
+          "created_at": "2026-06-22T01:03:40Z",
+          "born_this_frame": false
+        },
+        {
           "name": "rapp-neighborhood-protocol",
           "owner": "kody-w",
           "layer": "network",
@@ -225,6 +292,14 @@
           "layer": "network",
           "category": "front doors & neighborhoods",
           "created_at": "2026-05-26T20:47:21Z",
+          "born_this_frame": false
+        },
+        {
+          "name": "rapp-roadmap",
+          "owner": "kody-w",
+          "layer": "kernel",
+          "category": null,
+          "created_at": "2026-06-28T16:48:16Z",
           "born_this_frame": true
         },
         {
@@ -236,12 +311,20 @@
           "born_this_frame": false
         },
         {
+          "name": "rapp-spine",
+          "owner": "kody-w",
+          "layer": "map",
+          "category": null,
+          "created_at": "2026-06-28T16:00:32Z",
+          "born_this_frame": true
+        },
+        {
           "name": "rapp-static-apis",
           "owner": "kody-w",
           "layer": "distribution",
           "category": "identity & registry",
           "created_at": "2026-05-26T01:32:53Z",
-          "born_this_frame": true
+          "born_this_frame": false
         },
         {
           "name": "rapp-vneighborhood",
@@ -249,7 +332,7 @@
           "layer": "network",
           "category": "front doors & neighborhoods",
           "created_at": "2026-05-27T16:44:31Z",
-          "born_this_frame": true
+          "born_this_frame": false
         },
         {
           "name": "rapp-vscode-extension",
@@ -265,6 +348,14 @@
           "layer": "uncataloged",
           "category": "kernel & install",
           "created_at": "2026-01-30T19:51:20Z",
+          "born_this_frame": false
+        },
+        {
+          "name": "rapp_docs",
+          "owner": "kody-w",
+          "layer": "map",
+          "category": null,
+          "created_at": "2026-06-21T23:56:19Z",
           "born_this_frame": false
         },
         {
@@ -329,7 +420,7 @@
           "layer": "uncataloged",
           "category": "the agent-built web",
           "created_at": "2026-05-26T19:30:43Z",
-          "born_this_frame": true
+          "born_this_frame": false
         },
         {
           "name": "rionet",
@@ -337,7 +428,7 @@
           "layer": "uncataloged",
           "category": "the agent-built web",
           "created_at": "2026-05-27T01:46:51Z",
-          "born_this_frame": true
+          "born_this_frame": false
         },
         {
           "name": "twin-egg-hatcher",
@@ -357,14 +448,13 @@
         }
       ],
       "born": [
-        "rapp-static-apis",
-        "rapp-carts",
-        "racon",
-        "rio",
-        "rapp-god-forum",
-        "rapp-resident",
-        "rionet",
-        "rapp-vneighborhood"
+        "leviathan",
+        "rapp-spine",
+        "rapp-roadmap",
+        "rapp-frame-net",
+        "rapp-distro",
+        "rapp-eternity",
+        "rapp-burrow"
       ],
       "vanished": []
     },
@@ -378,21 +468,23 @@
       {
         "type": "birth",
         "repos": [
-          "rapp-static-apis",
-          "rapp-carts",
-          "racon",
-          "rio",
-          "rapp-god-forum",
-          "rapp-resident",
-          "rionet",
-          "rapp-vneighborhood"
+          "leviathan",
+          "rapp-spine",
+          "rapp-roadmap",
+          "rapp-frame-net",
+          "rapp-distro",
+          "rapp-eternity",
+          "rapp-burrow"
         ]
+      },
+      {
+        "type": "canon",
+        "id": "spine-foundation-locked",
+        "text": "rapp-spine + rapp-foundation generated: the content-addressed registry of the RAPP foundation pillars is locked (kernel rapp-agent/1.0 v0.6.0 pinned as the grail). The skeleton the body checks against comes online."
       }
     ]
   },
-  "payload_hash": "8653faa1a69a328cf9da661500e134ef63d13edf9e7089816c288fa8b4119f55",
-  "prev": "42412814d20189047b1b914d3d7d9c8d1b688b7945a05df86de0e55c7b355cc0",
-  "prev_wave": null,
-  "sig": null,
-  "frame_hash": "25b181bbe0c45aee95d78550a4aae5ca18b088a3d48d4a524e60c748c18fcf48"
+  "sha256": "e512cadbd0bc100efb694c5ce50b3c9b992638a37aaa1841c7c194c7cee42d05",
+  "parent_sha": "abaf5afab4808710e1444ec8744524ea50187bc7536545349a2ecea15db6a6da",
+  "sig": null
 }
