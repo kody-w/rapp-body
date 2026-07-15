@@ -193,7 +193,7 @@ Everything is raw-loadable over `raw.githubusercontent.com`, CORS-open, no serve
 CONSTITUTION Art. XXXIV.1 / XXXVI.1, locked 2026-06-03). The string is self-locating:
 
 ```
-rappid:@kody-w/rapp-body:324197c16e7e0ca78e19f8a4e1aef76ed34b6694527bb566753c4c89a8ba71f6
+rappid:@kody-w/rapp-body:817839d299ddfb173097c58a0434c5c1ef5cd2cd55086c46cfe728bf9bfeb657
                          └─ the 64-hex tail is an opaque JOIN KEY, never derived from the slug
 ```
 

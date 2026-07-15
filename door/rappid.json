@@ -1,12 +1,12 @@
 {
-  "schema": "rapp-rappid/2.0",
-  "rappid": "rappid:@kody-w/rapp-body:97d5b1504ee1fd397221fd1800cc98c7bf0464faff555020d327a59354a96f33",
+  "schema": "rapp/1",
+  "rappid": "rappid:@kody-w/rapp-body:33bdd7cf40b834ff2cbb9c462dc7e327b20aa05f02b539a3849a1ed6b0b37de1",
   "kind": "doorman",
   "name": "herald",
   "display_name": "Herald — the body's doorman",
   "github": "https://github.com/kody-w/rapp-body/tree/main/door",
   "url": "https://kody-w.github.io/rapp-body/door/",
-  "parent_rappid": "rappid:@kody-w/rapp-body:324197c16e7e0ca78e19f8a4e1aef76ed34b6694527bb566753c4c89a8ba71f6",
+  "parent_rappid": "rappid:@kody-w/rapp-body:817839d299ddfb173097c58a0434c5c1ef5cd2cd55086c46cfe728bf9bfeb657",
   "parent_repo": "https://github.com/kody-w/rapp-body",
   "planted_by": "kody-w",
   "planted_at": "2026-07-14T00:00:00Z",
@@ -20,5 +20,6 @@
   },
   "lexicon_sha": "c7c10ecba56e02eabc86bf178e9d2134cba8ce50338abc3d4d2e5ff2ef4bd51f",
   "_note": "Keyless organism, hosted in its parent's repo (a posting, never a product — Lexicon R7; catalog precedent: rapplications mint their own rappid inside a host repo, Art. XXXVII). The 64-hex tail is hashlib.sha256(uuid.uuid4().bytes).hexdigest() — a stable opaque join key, NOT sha256('<owner>/<slug>'). Herald is a DOG posted at the biography's door: it answers strangers from the public frames only (bones, receipts included) and can escalate to a visitor's own brainstem via derive(public frames) + overlay(their session). 'Herald' here is the posting — distinct from the herald key and the Herald rank (Lexicon R6).",
-  "_legacy_uuid": "327b2d27-091c-4be9-84a0-2f3fa734ff32"
+  "_legacy_uuid": "327b2d27-091c-4be9-84a0-2f3fa734ff32",
+  "_migrated_from": "rappid:@kody-w/rapp-body:97d5b1504ee1fd397221fd1800cc98c7bf0464faff555020d327a59354a96f33"
 }
