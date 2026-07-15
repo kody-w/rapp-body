@@ -1,11 +1,11 @@
 {
   "spec": "rapp-body-vitals/1.0",
   "twin_id": "rappid:@kody-w/rapp-body:324197c16e7e0ca78e19f8a4e1aef76ed34b6694527bb566753c4c89a8ba71f6",
-  "updated": "2026-07-15T00:49:24.633Z",
+  "updated": "2026-07-15T01:24:58.741Z",
   "head": {
-    "seq": 24,
-    "sha256": "b7873ea897c83ac6de140005671f815280954f959c75bc3e5159c3ecfbe3d4ac",
-    "ts": "2026-07-15T00:49:24.623Z",
+    "seq": 25,
+    "sha256": "6dfe755a3283fcc44accbe199de29709f33533a5eeba31f67b80acc624dd7b40",
+    "ts": "2026-07-15T01:24:58.731Z",
     "kind": "body.pulse"
   },
   "health": {
@@ -15,27 +15,9 @@
     "repos_present": 52,
     "transport_unreadable": 0,
     "degraded": false,
-    "born_recent": [
-      "rapp-messaging"
-    ],
+    "born_recent": [],
     "vanished_recent": [],
-    "heads_advanced_recent": [
-      "heimdall",
-      "openrappter",
-      "RAPP",
-      "RAPP-Bible",
-      "rapp-egg-hub",
-      "rapp-estate",
-      "rapp-god",
-      "rapp-installer",
-      "rapp-map",
-      "RAPP-Network",
-      "rapp-spine",
-      "rapp-static-apis",
-      "rappterbook",
-      "rappterbox",
-      "RAR"
-    ],
+    "heads_advanced_recent": [],
     "drift_sweep": {
       "verdict": "RECONCILED",
       "findings": 7,
