@@ -12,7 +12,7 @@
   "planted_at": "2026-07-08T00:00:00Z",
   "kernel_version": "0.6.0",
   "frames": "frames/index.json",
-  "_note": "Keyless organism. Per rapp-rappid/2.0 (RAPP/specs/SPEC.md §2.3) and the bond.py mint idiom, the 64-hex tail is hashlib.sha256(uuid.uuid4().bytes).hexdigest() — a stable, opaque JOIN KEY, NOT sha256('<owner>/<slug>'). The kind lives in this record, not the string. rapp-body holds no master keypair, so identity is UUID-anchored (keyed organisms would anchor on sha256(master_pubkey_SPKI)). Chain integrity for the frames comes from the sha256 payload links; a keypair signature is OPTIONAL and omitted.",
+  "_note": "Keyless organism. Per rapp/1 (RAPP/specs/SPEC.md §2.3; ratified schema name, Constitution Art. LIV, formerly rapp-rappid/2.0) and the bond.py mint idiom, the 64-hex tail is hashlib.sha256(uuid.uuid4().bytes).hexdigest() — a stable, opaque JOIN KEY, NOT sha256('<owner>/<slug>'). The kind lives in this record, not the string. rapp-body holds no master keypair, so identity is UUID-anchored (keyed organisms would anchor on sha256(master_pubkey_SPKI)). Chain integrity for the frames comes from the sha256 payload links; a keypair signature is OPTIONAL and omitted.",
   "_legacy_uuid": "00e85bc3-f9a4-4c69-8467-8ae9c7ebd9dd",
   "_migrated_from": [
     "rappid:@kody-w/rapp-body:324197c16e7e0ca78e19f8a4e1aef76ed34b6694527bb566753c4c89a8ba71f6",

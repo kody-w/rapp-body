@@ -24,7 +24,7 @@ rapp-body/
 │   ├── 0.json … N.json     #   one frame per slice, named <seq>.json (twin convention)
 │   └── index.json          #   manifest: ONE fetch loads the whole timeline map
 ├── vitals.json             # latest-frame pointer + current health rollup (static API)
-├── rappid.json             # the body's Eternity identity (rapp-rappid/2.0)
+├── rappid.json             # the body's Eternity identity (rapp/1)
 ├── sweeps/latest.json      # optional input: latest mesh-sweep verdict (feeds vitals)
 ├── player.html             # the flip book — self-contained, zero-CDN, watch the body change
 ├── tools/
@@ -189,8 +189,9 @@ Everything is raw-loadable over `raw.githubusercontent.com`, CORS-open, no serve
 
 ## Identity
 
-`rappid.json` mints the body's identity under **rapp-rappid/2.0** (canonical Eternity form,
-CONSTITUTION Art. XXXIV.1 / XXXVI.1, locked 2026-06-03). The string is self-locating:
+`rappid.json` mints the body's identity under **rapp/1** (ratified schema name,
+CONSTITUTION Art. LIV, 2026-07-15; canonical Eternity form per Art. XXXIV.1 / XXXVI.1;
+formerly styled rapp-rappid/2.0). The string is self-locating:
 
 ```
 rappid:@kody-w/rapp-body:817839d299ddfb173097c58a0434c5c1ef5cd2cd55086c46cfe728bf9bfeb657
