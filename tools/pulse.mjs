@@ -27,10 +27,11 @@
 //
 // No-churn rule (hard): if skeleton+census+vitals are materially identical to the
 // previous frame (timestamps + gaps + stale markers ignored), DO NOT mint — print
-// "no change; no frame".  --heartbeat overrides it (a liveness frame).
+// "no change; no frame".  --heartbeat and --birth override it.
 //
 //   node tools/pulse.mjs
 //   node tools/pulse.mjs --heartbeat          # force a liveness frame
+//   node tools/pulse.mjs --birth --lexicon-sha <64hex>
 //   node tools/pulse.mjs --force-degraded     # mint even when the slice is incoherent
 //
 // Exit codes: 0 = minted or clean no-change · 1 = internal error · 3 = slice incoherent.
@@ -48,6 +49,9 @@ import {
 } from "./_frame.mjs";
 
 const HEARTBEAT = process.argv.includes("--heartbeat");
+const BIRTH = process.argv.includes("--birth");
+const LEXICON_SHA_INDEX = process.argv.indexOf("--lexicon-sha");
+const LEXICON_SHA = LEXICON_SHA_INDEX === -1 ? null : process.argv[LEXICON_SHA_INDEX + 1];
 const FORCE_DEGRADED = process.argv.includes("--force-degraded");
 const INCOHERENT_PCT = 0.20; // >20% of census repos transport-unreadable ⇒ slice incoherent
 const OWNER_USER = "kody-w";
@@ -329,7 +333,11 @@ function deriveEvents({ isGenesis, prevFrame, skeleton, census, vitals, sweep, a
 // ---- main -----------------------------------------------------------------------------
 
 async function main() {
-  console.log(`pulse — cache: ${JSON.stringify(usingCache())}${HEARTBEAT ? "  [--heartbeat]" : ""}`);
+  if (BIRTH && !/^[0-9a-f]{64}$/.test(LEXICON_SHA || "")) {
+    throw new Error("--birth requires --lexicon-sha followed by exactly 64 lowercase hex characters");
+  }
+
+  console.log(`pulse — cache: ${JSON.stringify(usingCache())}${HEARTBEAT ? "  [--heartbeat]" : ""}${BIRTH ? "  [--birth]" : ""}`);
 
   const chain = readChain();
   const prevFrame = chain[chain.length - 1] || null;
@@ -378,18 +386,27 @@ async function main() {
   console.log(`slice: ${cen.repos.length} repos (${cen.presentCount} present, ${cen.transportUnreadable} transport-unreadable), spec ${sk.skeleton.spec_version}, mirrors_identical=${sk.skeleton.mirrors_identical}, gaps=${allGaps.length}`);
   console.log(`fingerprint: ${fp.slice(0, 16)}  prev: ${prevFp ? prevFp.slice(0, 16) : "—"}  genesis=${isGenesis}`);
 
-  if (!isGenesis && prevFp === fp && !HEARTBEAT) {
+  if (!isGenesis && prevFp === fp && !HEARTBEAT && !BIRTH) {
     console.log("no change; no frame");
     return;
   }
 
   const events = deriveEvents({ isGenesis, prevFrame, skeleton: sk.skeleton, census: cen, vitals: vt.vitals, sweep: vt.sweep, allGaps });
   if (HEARTBEAT) events.unshift({ type: "heartbeat", text: "weekly liveness pulse — the body is alive even when nothing changed." });
+  if (BIRTH) {
+    events.unshift(
+      { type: "birth", text: "The body is born: kody-w/rapp-body publishes today. Cradle-to-now biography — 21 reconstructed frames from git archaeology, witnessed pulses since 2026-07-08 — now public, chained, and verifiable by anyone." },
+      { type: "lexicon-sealed", lexicon_sha: LEXICON_SHA, text: "The Lexicon is sealed: LEXICON.md at the species root (Constitution Article LII), sha256 pinned in this frame as lexicon_sha. The body is born speaking a sealed language — Nine Words, one operator, one wire, three shelves, nine rulings." },
+      { type: "heal-complete", text: "Movement I closes RECONCILED: the R3 full-mesh re-sweep adjudicated 7 findings — 2 fixed and merged upstream, 4 waived with canon citations, 1 detector re-baselined. Gate: zero unexplained drift." },
+      { type: "immune-system-executable", text: "The immune system gained an executable memory: golden drift cases with expected rulings and a waiver ledger now live in the map layer — future sweeps validate themselves against fossilized judgment before their verdicts are trusted." },
+    );
+  }
 
   const ts = nowIso();
   const degraded = incoherent && FORCE_DEGRADED;
   const payload = {
     taken_ts: ts,
+    ...(BIRTH ? { lexicon_sha: LEXICON_SHA } : {}),
     provenance: degraded
       ? { mode: "witnessed", degraded: true, degraded_reason: { homes_unreadable: homesUnreadable, transport_unreadable: cen.transportUnreadable } }
       : { mode: "witnessed" },
