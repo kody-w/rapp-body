@@ -243,3 +243,12 @@ checks the `parent_sha` linkage — the same hash-trust, PKI-free integrity patt
 `canonicalize()` in `tools/_frame.mjs` is byte-identical to twin's. The frames interoperate
 conceptually with `kody-w/twin/frames`; the only difference is scope — a twin's biography is
 one being, this is the biography of RAPP itself.
+
+---
+
+## The door
+
+[Herald](https://kody-w.github.io/rapp-body/door/) is the body's doorman: a frame-grounded
+chat posting that answers from the public biography with clickable receipts. Its
+`born_of_frame` pin is frame `24`. Under Lexicon R6, **Herald** here names the Herald
+**POSTING**, not the herald key or the Herald rank.

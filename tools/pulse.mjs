@@ -27,11 +27,12 @@
 //
 // No-churn rule (hard): if skeleton+census+vitals are materially identical to the
 // previous frame (timestamps + gaps + stale markers ignored), DO NOT mint — print
-// "no change; no frame".  --heartbeat and --birth override it.
+// "no change; no frame".  --heartbeat, --birth, and --events-file override it.
 //
 //   node tools/pulse.mjs
 //   node tools/pulse.mjs --heartbeat          # force a liveness frame
 //   node tools/pulse.mjs --birth --lexicon-sha <64hex>
+//   node tools/pulse.mjs --events-file events.json
 //   node tools/pulse.mjs --force-degraded     # mint even when the slice is incoherent
 //
 // Exit codes: 0 = minted or clean no-change · 1 = internal error · 3 = slice incoherent.
@@ -52,10 +53,40 @@ const HEARTBEAT = process.argv.includes("--heartbeat");
 const BIRTH = process.argv.includes("--birth");
 const LEXICON_SHA_INDEX = process.argv.indexOf("--lexicon-sha");
 const LEXICON_SHA = LEXICON_SHA_INDEX === -1 ? null : process.argv[LEXICON_SHA_INDEX + 1];
+const EVENTS_FILE_INDEX = process.argv.indexOf("--events-file");
+const HAS_EVENTS_FILE = EVENTS_FILE_INDEX !== -1;
+const EVENTS_FILE = HAS_EVENTS_FILE ? process.argv[EVENTS_FILE_INDEX + 1] : null;
 const FORCE_DEGRADED = process.argv.includes("--force-degraded");
 const INCOHERENT_PCT = 0.20; // >20% of census repos transport-unreadable ⇒ slice incoherent
 const OWNER_USER = "kody-w";
 const nowIso = () => new Date().toISOString();
+
+export function readEventsFile(filePath) {
+  if (!filePath || filePath.startsWith("--")) {
+    throw new Error("--events-file requires a path");
+  }
+  let events;
+  try {
+    events = JSON.parse(fs.readFileSync(path.resolve(filePath), "utf8"));
+  } catch (e) {
+    throw new Error(`--events-file could not read valid JSON from ${filePath}: ${e.message}`);
+  }
+  if (!Array.isArray(events)) {
+    throw new Error("--events-file must contain a JSON array");
+  }
+  events.forEach((event, index) => {
+    if (!event || typeof event !== "object" || Array.isArray(event)) {
+      throw new Error(`--events-file event ${index} must be an object`);
+    }
+    if (typeof event.type !== "string" || !event.type.trim()) {
+      throw new Error(`--events-file event ${index} is missing type`);
+    }
+    if (typeof event.text !== "string" || !event.text.trim()) {
+      throw new Error(`--events-file event ${index} is missing text`);
+    }
+  });
+  return events;
+}
 
 // ---- skeleton -------------------------------------------------------------------------
 
@@ -333,11 +364,12 @@ function deriveEvents({ isGenesis, prevFrame, skeleton, census, vitals, sweep, a
 // ---- main -----------------------------------------------------------------------------
 
 async function main() {
+  const suppliedEvents = HAS_EVENTS_FILE ? readEventsFile(EVENTS_FILE) : [];
   if (BIRTH && !/^[0-9a-f]{64}$/.test(LEXICON_SHA || "")) {
     throw new Error("--birth requires --lexicon-sha followed by exactly 64 lowercase hex characters");
   }
 
-  console.log(`pulse — cache: ${JSON.stringify(usingCache())}${HEARTBEAT ? "  [--heartbeat]" : ""}${BIRTH ? "  [--birth]" : ""}`);
+  console.log(`pulse — cache: ${JSON.stringify(usingCache())}${HEARTBEAT ? "  [--heartbeat]" : ""}${BIRTH ? "  [--birth]" : ""}${HAS_EVENTS_FILE ? `  [--events-file ${EVENTS_FILE}]` : ""}`);
 
   const chain = readChain();
   const prevFrame = chain[chain.length - 1] || null;
@@ -386,7 +418,7 @@ async function main() {
   console.log(`slice: ${cen.repos.length} repos (${cen.presentCount} present, ${cen.transportUnreadable} transport-unreadable), spec ${sk.skeleton.spec_version}, mirrors_identical=${sk.skeleton.mirrors_identical}, gaps=${allGaps.length}`);
   console.log(`fingerprint: ${fp.slice(0, 16)}  prev: ${prevFp ? prevFp.slice(0, 16) : "—"}  genesis=${isGenesis}`);
 
-  if (!isGenesis && prevFp === fp && !HEARTBEAT && !BIRTH) {
+  if (!isGenesis && prevFp === fp && !HEARTBEAT && !BIRTH && !HAS_EVENTS_FILE) {
     console.log("no change; no frame");
     return;
   }
@@ -401,6 +433,7 @@ async function main() {
       { type: "immune-system-executable", text: "The immune system gained an executable memory: golden drift cases with expected rulings and a waiver ledger now live in the map layer — future sweeps validate themselves against fossilized judgment before their verdicts are trusted." },
     );
   }
+  if (HAS_EVENTS_FILE) events.unshift(...suppliedEvents);
 
   const ts = nowIso();
   const degraded = incoherent && FORCE_DEGRADED;
