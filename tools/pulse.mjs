@@ -34,12 +34,15 @@
 //   node tools/pulse.mjs --birth --lexicon-sha <64hex>
 //   node tools/pulse.mjs --events-file events.json
 //   node tools/pulse.mjs --force-degraded     # mint even when the slice is incoherent
+//   node tools/pulse.mjs --dry-run            # build + gate a candidate; write no state
 //
-// Exit codes: 0 = minted or clean no-change · 1 = internal error · 3 = slice incoherent.
+// Exit codes: 0 = minted/dry-run/clean no-change · 1 = internal error
+//             3 = slice incoherent · 4 = pre-append frame gate refused.
 //
 // Anonymous-safe; uses GITHUB_TOKEN when present; honors RAPP_CACHE_DIR (see _gh.mjs).
 
 import fs from "node:fs";
+import os from "node:os";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 import { repoMeta, repoHead, rawFile, driftIssues, usingCache } from "./_gh.mjs";
@@ -48,9 +51,11 @@ import {
   buildFrame, writeFrame, writeIndex, writeVitals, readChain, listFrameFiles, readFrameFile,
   materialFingerprint, FRAMES_DIR, REPO_ROOT, KIND_WITNESSED, KIND_RECONSTRUCTED, readBodyId,
 } from "./_frame.mjs";
+import { printGateResult, validateCandidateFile } from "./frame-gate.mjs";
 
 const HEARTBEAT = process.argv.includes("--heartbeat");
 const BIRTH = process.argv.includes("--birth");
+const DRY_RUN = process.argv.includes("--dry-run");
 const LEXICON_SHA_INDEX = process.argv.indexOf("--lexicon-sha");
 const LEXICON_SHA = LEXICON_SHA_INDEX === -1 ? null : process.argv[LEXICON_SHA_INDEX + 1];
 const EVENTS_FILE_INDEX = process.argv.indexOf("--events-file");
@@ -60,6 +65,17 @@ const FORCE_DEGRADED = process.argv.includes("--force-degraded");
 const INCOHERENT_PCT = 0.20; // >20% of census repos transport-unreadable ⇒ slice incoherent
 const OWNER_USER = "kody-w";
 const nowIso = () => new Date().toISOString();
+
+function gateTemporaryCandidate(frame) {
+  const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "rapp-body-frame-gate-"));
+  const candidatePath = path.join(tempDir, `${frame.seq}.candidate.json`);
+  try {
+    fs.writeFileSync(candidatePath, JSON.stringify(frame, null, 2) + "\n");
+    return validateCandidateFile(candidatePath);
+  } finally {
+    fs.rmSync(tempDir, { recursive: true, force: true });
+  }
+}
 
 export function readEventsFile(filePath) {
   if (!filePath || filePath.startsWith("--")) {
@@ -369,7 +385,7 @@ async function main() {
     throw new Error("--birth requires --lexicon-sha followed by exactly 64 lowercase hex characters");
   }
 
-  console.log(`pulse — cache: ${JSON.stringify(usingCache())}${HEARTBEAT ? "  [--heartbeat]" : ""}${BIRTH ? "  [--birth]" : ""}${HAS_EVENTS_FILE ? `  [--events-file ${EVENTS_FILE}]` : ""}`);
+  console.log(`pulse — cache: ${JSON.stringify(usingCache())}${HEARTBEAT ? "  [--heartbeat]" : ""}${BIRTH ? "  [--birth]" : ""}${DRY_RUN ? "  [--dry-run]" : ""}${HAS_EVENTS_FILE ? `  [--events-file ${EVENTS_FILE}]` : ""}`);
 
   const chain = readChain();
   const prevFrame = chain[chain.length - 1] || null;
@@ -405,7 +421,8 @@ async function main() {
     process.exit(3);
   }
   if (incoherent && FORCE_DEGRADED) {
-    console.warn(`[--force-degraded] minting a DEGRADED slice: ${homesUnreadable.length} home(s) unreadable, ${cen.transportUnreadable}/${rows.length} repos transport-unreadable (carried forward as stale).`);
+    const action = DRY_RUN ? "building a DEGRADED dry-run candidate" : "minting a DEGRADED slice";
+    console.warn(`[--force-degraded] ${action}: ${homesUnreadable.length} home(s) unreadable, ${cen.transportUnreadable}/${rows.length} repos transport-unreadable (carried forward as stale).`);
   }
 
   // The MATERIAL slice (skeleton+census+vitals) drives the no-churn decision. By doctrine
@@ -459,6 +476,18 @@ async function main() {
 
   const seq = prevFrame ? prevFrame.seq + 1 : 0;
   const frame = buildFrame({ kind: KIND_WITNESSED, seq, ts, payload, parent_sha: prevFrame ? prevFrame.sha256 : null });
+  const gateResult = gateTemporaryCandidate(frame);
+  printGateResult(gateResult);
+  if (!gateResult.allowed) {
+    console.error("pulse: candidate refused; no frame, index, or vitals state was written");
+    process.exitCode = 4;
+    return;
+  }
+  if (DRY_RUN) {
+    console.log(`DRY RUN: candidate seq ${seq} passed the gate (${events.length} event(s)); no frame, index, or vitals state was written`);
+    return;
+  }
+
   writeFrame(frame);
 
   const frames = readChain();

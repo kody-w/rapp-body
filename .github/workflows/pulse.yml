@@ -37,8 +37,8 @@ jobs:
 
       - name: Pulse
         # CI ALWAYS runs with GITHUB_TOKEN (5000 req/hr), so the coherence gate is never
-        # tripped by rate-limiting. A gate refusal (exit 3) is a clean skip, not a failure:
-        # an observation gap is transport, not biography — we mint nothing and move on.
+        # tripped by rate-limiting. Only coherence exit 3 is a clean skip; a pre-append
+        # frame-gate refusal is exit 4 and must fail this job.
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -54,6 +54,9 @@ jobs:
           if [ "$code" -eq 3 ]; then
             echo "::warning::slice incoherent — refused to mint (transient); no frame this run"
             exit 0
+          fi
+          if [ "$code" -eq 4 ]; then
+            echo "::error::pre-append frame gate refused the candidate; no append occurred"
           fi
           exit "$code"
 
