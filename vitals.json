@@ -1,11 +1,11 @@
 {
   "spec": "rapp-body-vitals/1.0",
   "twin_id": "rappid:@kody-w/rapp-body:324197c16e7e0ca78e19f8a4e1aef76ed34b6694527bb566753c4c89a8ba71f6",
-  "updated": "2026-07-15T01:41:53.356Z",
+  "updated": "2026-07-15T02:12:32.718Z",
   "head": {
-    "seq": 26,
-    "sha256": "13120453768523d9b8f6faf55993d640e7fe51f4fe333af1dd1ab107a6351d6d",
-    "ts": "2026-07-15T01:41:53.343Z",
+    "seq": 27,
+    "sha256": "2b525e67f3d49fe1b8d1266a81746c77feee34c31747d66655ea62de8b5e041d",
+    "ts": "2026-07-15T02:12:32.701Z",
     "kind": "body.pulse"
   },
   "health": {
@@ -18,14 +18,17 @@
     "born_recent": [],
     "vanished_recent": [],
     "heads_advanced_recent": [
-      "rappterbook"
+      "RAPP",
+      "rapp-egg-hub",
+      "rapp-map",
+      "RAR"
     ],
     "drift_sweep": {
       "verdict": "RECONCILED",
       "findings": 7,
       "high": 2
     },
-    "open_drift_issues": 0,
+    "open_drift_issues": 2,
     "observation_gaps": 0
   }
 }
