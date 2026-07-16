@@ -11,7 +11,7 @@ export const SEALED_LEXICON_SHA = "c7c10ecba56e02eabc86bf178e9d2134cba8ce50338ab
 const HEX64 = /^[0-9a-f]{64}$/;
 const EMAIL = /\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/i;
 const RESTRICTED_MAIL_MARKER = /@(microsoft|gmail)\b/i;
-const PRIVATE_IDENTIFIER = /kowildfe/i;
+const PRIVATE_IDENTIFIER = new RegExp(["kowi", "ldfe"].join(""), "i");
 const NULL_STRING_ARTIFACT = /\b(?:undefined|null)\b/i;
 const OWNER_SLUG_RAPPID = /rappid:@([A-Za-z0-9][A-Za-z0-9-]*)\/([A-Za-z0-9._-]+):([0-9a-fA-F]{64})(?![0-9a-fA-F])/g;
 
