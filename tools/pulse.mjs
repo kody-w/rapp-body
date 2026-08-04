@@ -42,16 +42,15 @@
 // Anonymous-safe; uses GITHUB_TOKEN when present; honors RAPP_CACHE_DIR (see _gh.mjs).
 
 import fs from "node:fs";
-import os from "node:os";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 import { repoMeta, repoHead, rawFile, driftIssues, usingCache } from "./_gh.mjs";
 import { SPEC_HOMES, SPINE, unionCensus } from "./_census.mjs";
 import {
-  buildFrame, writeFrame, writeIndex, writeVitals, readChain, listFrameFiles, readFrameFile,
-  materialFingerprint, FRAMES_DIR, REPO_ROOT, KIND_WITNESSED, KIND_RECONSTRUCTED, readBodyId,
+  buildFrame, writeFrame, writeIndex, writeVitals, readChain,
+  materialFingerprint, REPO_ROOT, KIND_WITNESSED,
 } from "./_frame.mjs";
-import { printGateResult, validateCandidateFile } from "./frame-gate.mjs";
+import { printGateResult, validateCandidate } from "./frame-gate.mjs";
 
 const HEARTBEAT = process.argv.includes("--heartbeat");
 const BIRTH = process.argv.includes("--birth");
@@ -66,15 +65,8 @@ const INCOHERENT_PCT = 0.20; // >20% of census repos transport-unreadable ⇒ sl
 const OWNER_USER = "kody-w";
 const nowIso = () => new Date().toISOString();
 
-function gateTemporaryCandidate(frame) {
-  const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "rapp-body-frame-gate-"));
-  const candidatePath = path.join(tempDir, `${frame.seq}.candidate.json`);
-  try {
-    fs.writeFileSync(candidatePath, JSON.stringify(frame, null, 2) + "\n");
-    return validateCandidateFile(candidatePath);
-  } finally {
-    fs.rmSync(tempDir, { recursive: true, force: true });
-  }
+function gateCandidate(frame) {
+  return validateCandidate(frame);
 }
 
 export function readEventsFile(filePath) {
@@ -321,7 +313,7 @@ function deriveEvents({ isGenesis, prevFrame, skeleton, census, vitals, sweep, a
 
   if (isGenesis) {
     events.push({ type: "genesis", text: "The witnessed biography opens: the body begins pulsing live. Every earlier frame is reconstructed from git history; from here the pulse observes the organism directly." });
-    events.push({ type: "biography-born", text: "kody-w/rapp-body born — the organism's own public, sha256-chained biography (rapp-frame/2.0), the same organ a twin carries, now at ecosystem scale." });
+    events.push({ type: "biography-born", text: "kody-w/rapp-body born — the organism's own public, rapp/1 hash-chained biography, the same organ a twin carries, now at ecosystem scale." });
     events.push({ type: "immune-system", text: "PLAN-drift-immunity in flight: the mesh sweep DETECTS drift, these frames REMEMBER it. Detection + memory close the loop." });
   }
 
@@ -452,10 +444,10 @@ async function main() {
   }
   if (HAS_EVENTS_FILE) events.unshift(...suppliedEvents);
 
-  const ts = nowIso();
+  const utc = nowIso();
   const degraded = incoherent && FORCE_DEGRADED;
   const payload = {
-    taken_ts: ts,
+    taken_ts: utc,
     ...(BIRTH ? { lexicon_sha: LEXICON_SHA } : {}),
     provenance: degraded
       ? { mode: "witnessed", degraded: true, degraded_reason: { homes_unreadable: homesUnreadable, transport_unreadable: cen.transportUnreadable } }
@@ -475,8 +467,8 @@ async function main() {
   };
 
   const seq = prevFrame ? prevFrame.seq + 1 : 0;
-  const frame = buildFrame({ kind: KIND_WITNESSED, seq, ts, payload, parent_sha: prevFrame ? prevFrame.sha256 : null });
-  const gateResult = gateTemporaryCandidate(frame);
+  const frame = buildFrame({ kind: KIND_WITNESSED, seq, utc, payload, head: prevFrame });
+  const gateResult = gateCandidate(frame);
   printGateResult(gateResult);
   if (!gateResult.allowed) {
     console.error("pulse: candidate refused; no frame, index, or vitals state was written");
@@ -509,7 +501,7 @@ async function main() {
   };
   writeVitals(frame, health);
 
-  console.log(`\nMINTED ${isGenesis ? "GENESIS " : ""}frame seq ${seq}  sha256 ${frame.sha256.slice(0, 16)}…  (${events.length} events)`);
+  console.log(`\nMINTED ${isGenesis ? "GENESIS " : ""}frame seq ${seq}  payload ${frame.payload_hash.slice(0, 16)}…  wave ${frame.frame_hash.slice(0, 16)}…  (${events.length} events)`);
   console.log("events:");
   for (const e of events) console.log(`  • ${e.type}${e.text ? " — " + e.text : e.detail ? " — " + e.detail : ""}`);
   console.log(`\nframes/index.json + vitals.json updated. chain length: ${frames.length}`);

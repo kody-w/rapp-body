@@ -108,7 +108,7 @@
 </head>
 <body>
 <div class="wrap">
-  <h1>RAPP Body — biography <span class="sub">watch the organism be born, grow, and transform · rapp-frame/2.0 · public, sha256-chained · <a href="door/">🚪 ask me</a></span></h1>
+  <h1>RAPP Body — biography <span class="sub">watch the organism be born, grow, and transform · rapp/1 · public, hash-chained · <a href="door/">🚪 ask me</a></span></h1>
 
   <!-- vitals strip -->
   <div class="vitals" id="vitals" role="group" aria-label="current frame vital signs"></div>
@@ -260,7 +260,7 @@
       const d=document.createElement("div");
       d.className="tl-ev "+(EVCLASS[chosen]||"ev-gap");
       d.style.left=xForSeq(m.seq)+"%";
-      d.title=`seq ${m.seq} · ${dayStr(f.ts)} · ${[...types].join(", ")}`;
+      d.title=`seq ${m.seq} · ${dayStr(f.utc)} · ${[...types].join(", ")}`;
       d.setAttribute("role","button"); d.setAttribute("tabindex","0");
       d.setAttribute("aria-label",`jump to frame ${m.seq}, ${[...types].join(", ")}`);
       const jump=()=>show(m.seq);
@@ -408,12 +408,12 @@
 
   async function renderBody(frame, prevFrame){
     const svg = el("stage"); while(svg.firstChild) svg.removeChild(svg.firstChild);
-    const recon = frame.kind === "body.pulse.reconstructed";
+    const recon = frame.kind === "body.pulse-reconstructed";
     const root = document.createElementNS(SVGNS,"g");
     if(recon) root.setAttribute("class","recon-film");
     svg.appendChild(root);
 
-    const frameTsMs = parseTs(frame.ts);
+    const frameTsMs = parseTs(frame.utc);
     const repos = (frame.payload.census && frame.payload.census.repos) || [];
     const born = new Set((frame.payload.census && frame.payload.census.born) || []);
     const vanished = (frame.payload.census && frame.payload.census.vanished) || [];
@@ -567,12 +567,12 @@
   // ---------- panels ----------
   function renderVitals(frame){
     const p=frame.payload, sk=p.skeleton||{}, v=p.vitals||{}, c=p.census||{};
-    const recon = frame.kind==="body.pulse.reconstructed";
+    const recon = frame.kind==="body.pulse-reconstructed";
     const sweep = v.sync||{};
     const drift = (sweep.findings||0);
     const chips = [
       ["frame", `${frame.seq} / ${state.total-1}`],
-      ["date", dayStr(frame.ts)],
+      ["date", dayStr(frame.utc)],
       ["phase", recon?`<span class="badge recon">reconstructed</span>`:`<span class="badge wit">witnessed</span>`],
       ["spec", sk.spec_version?("v"+sk.spec_version):"—"],
       ["mirrors", sk.mirrors_identical===true?"identical":(sk.mirrors_identical===false?"DIVERGE":"—")],
@@ -619,8 +619,8 @@
     el("slider").value = String(i);
     el("seqLabel").textContent = `${i} / ${state.total-1}`;
     const cur=el("tlCursor"); if(cur) cur.style.left = xForSeq(i)+"%";
-    el("stageNote").textContent = `seq ${frame.seq} · ${dayStr(frame.ts)} · ${frame.kind.replace("body.pulse","pulse")} · ${(frame.payload.census.count||0)} organs`;
-    el("foot").innerHTML = `content-address <span class="mono">body@${frame.sha256.slice(0,12)}</span> · parent <span class="mono">${frame.parent_sha?frame.parent_sha.slice(0,12):"null (cradle)"}</span> · twin_id <span class="mono">${state.index.twin_id?state.index.twin_id.slice(0,34)+"…":""}</span>`;
+    el("stageNote").textContent = `seq ${frame.seq} · ${dayStr(frame.utc)} · ${frame.kind.replace("body.pulse","pulse")} · ${(frame.payload.census.count||0)} organs`;
+    el("foot").innerHTML = `content-address <span class="mono">body@${frame.payload_hash.slice(0,12)}</span> · prev <span class="mono">${frame.prev?frame.prev.slice(0,12):"null (cradle)"}</span> · stream_id <span class="mono">${state.index.stream_id?state.index.stream_id.slice(0,34)+"…":""}</span>`;
 
     // "film develops" flash when crossing genesis forward
     if(!initial && state.firstWit>0 && prevIndex===state.firstWit-1 && i===state.firstWit){
@@ -628,7 +628,7 @@
     }
     // screen-reader announcement
     const v=frame.payload.vitals||{}; const sweep=v.sync||{};
-    el("stageDesc").textContent = `Frame ${i} of ${state.total-1}. ${dayStr(frame.ts)}. ${frame.kind==="body.pulse.reconstructed"?"Reconstructed":"Witnessed"} slice. `
+    el("stageDesc").textContent = `Frame ${i} of ${state.total-1}. ${dayStr(frame.utc)}. ${frame.kind==="body.pulse-reconstructed"?"Reconstructed":"Witnessed"} slice. `
       + `${frame.payload.census.count||0} cataloged organs, ${(frame.payload.census.present!=null?frame.payload.census.present:(frame.payload.census.reachable!=null?frame.payload.census.reachable:frame.payload.census.count))||0} present. `
       + `Spec ${frame.payload.skeleton.spec_version||"unknown"}. ${sweep.verdict?("Sweep "+sweep.verdict+", "+(sweep.findings||0)+" findings."):""} `
       + `${(frame.payload.census.born||[]).length} born, ${(frame.payload.census.vanished||[]).length} vanished.`;

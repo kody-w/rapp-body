@@ -1,246 +1,305 @@
 {
   "spec": "rapp-frame-index/1.0",
-  "twin_id": "rappid:@kody-w/rapp-body:324197c16e7e0ca78e19f8a4e1aef76ed34b6694527bb566753c4c89a8ba71f6",
-  "generated": "2026-07-15T09:22:58.179Z",
+  "stream_id": "rappid:@kody-w/rapp-body:817839d299ddfb173097c58a0434c5c1ef5cd2cd55086c46cfe728bf9bfeb657",
+  "generated": "2026-08-04T01:39:44.306Z",
   "count": 29,
   "head": {
     "seq": 28,
-    "sha256": "639faa11008b28f7348ce7d1b200d7f89921cc2c8c47bc3fed3bb2d59f149048",
-    "ts": "2026-07-15T09:22:58.171Z",
+    "payload_hash": "ac1699a2c2edd905226f7b18b729a623904d74763a5568555b1c9fc49752c33a",
+    "frame_hash": "e475271f6a4c7e6ad506eb9458ea6145f4f2b1e6e2a1db8833e906acba4cbf78",
+    "utc": "2026-07-15T09:22:58.171Z",
     "kind": "body.pulse"
   },
   "frames": [
     {
       "seq": 0,
       "path": "frames/0.json",
-      "ts": "2025-11-24T00:00:00Z",
-      "kind": "body.pulse.reconstructed",
-      "sha256": "92396878228dd76baba5c938843b7104299d8dde526a2a017d6e3ed45f3c9e9a",
-      "parent_sha": null
+      "utc": "2025-11-24T00:00:00.000Z",
+      "kind": "body.pulse-reconstructed",
+      "payload_hash": "46c2d6591232fa0fe4cbdcb762bb8d0783b966b8470608be9493d4e1d706104b",
+      "frame_hash": "0af3c10a6252e89e1d5f057572fd1cbce085509133d095dffa5020b9e530081f",
+      "prev": null,
+      "prev_wave": null
     },
     {
       "seq": 1,
       "path": "frames/1.json",
-      "ts": "2026-01-15T00:00:00Z",
-      "kind": "body.pulse.reconstructed",
-      "sha256": "298d9de838eb14c7770098ae42375cbbf38b34b6fc6167ba28ac4501cae98d97",
-      "parent_sha": "92396878228dd76baba5c938843b7104299d8dde526a2a017d6e3ed45f3c9e9a"
+      "utc": "2026-01-15T00:00:00.000Z",
+      "kind": "body.pulse-reconstructed",
+      "payload_hash": "da93cdb6d4fcfa75b0e757b0f6f8b78ac663f33a8512c7cfa688072fc2818998",
+      "frame_hash": "d5ccb7c7ec7ba3b7aa1f88824ea2b38e694ce1d04ca3087263bfb43e4e6915cf",
+      "prev": "46c2d6591232fa0fe4cbdcb762bb8d0783b966b8470608be9493d4e1d706104b",
+      "prev_wave": null
     },
     {
       "seq": 2,
       "path": "frames/2.json",
-      "ts": "2026-01-22T00:00:00Z",
-      "kind": "body.pulse.reconstructed",
-      "sha256": "5e4fb8bd99354545d0155f19926ebf6742685e71793b7a77bfb9c751e8d90d5e",
-      "parent_sha": "298d9de838eb14c7770098ae42375cbbf38b34b6fc6167ba28ac4501cae98d97"
+      "utc": "2026-01-22T00:00:00.000Z",
+      "kind": "body.pulse-reconstructed",
+      "payload_hash": "b3b256a71e106661307763f2539fb08ea184d385e9ea06621c9ac577fbf0ff82",
+      "frame_hash": "0d247a13c213a93c5c850eab985b179963af20a8ecb7c17f01951bb78380c1c0",
+      "prev": "da93cdb6d4fcfa75b0e757b0f6f8b78ac663f33a8512c7cfa688072fc2818998",
+      "prev_wave": null
     },
     {
       "seq": 3,
       "path": "frames/3.json",
-      "ts": "2026-01-30T00:00:00Z",
-      "kind": "body.pulse.reconstructed",
-      "sha256": "a5516147ee001470a7738c4a42fa5ed60cc91c8a09c1482b6cebd6f8860da084",
-      "parent_sha": "5e4fb8bd99354545d0155f19926ebf6742685e71793b7a77bfb9c751e8d90d5e"
+      "utc": "2026-01-30T00:00:00.000Z",
+      "kind": "body.pulse-reconstructed",
+      "payload_hash": "23dd23e4ddd81df3f948b5867b25c12fe2ccb991ea2415136cbd6fe8b6c48e3b",
+      "frame_hash": "14ad3754460aa664c5e211aafd873868c33360546ed188c17ae49efd1bb5c0f6",
+      "prev": "b3b256a71e106661307763f2539fb08ea184d385e9ea06621c9ac577fbf0ff82",
+      "prev_wave": null
     },
     {
       "seq": 4,
       "path": "frames/4.json",
-      "ts": "2026-02-05T00:00:00Z",
-      "kind": "body.pulse.reconstructed",
-      "sha256": "2d16b8dfd3059140028bb03e6f0be94cd3b01e97a76111c59c3949beb5981f9c",
-      "parent_sha": "a5516147ee001470a7738c4a42fa5ed60cc91c8a09c1482b6cebd6f8860da084"
+      "utc": "2026-02-05T00:00:00.000Z",
+      "kind": "body.pulse-reconstructed",
+      "payload_hash": "7f447580b2808be7dd1bb2e291a85868b9ed6f5d36ec481b20235bab1c5507e1",
+      "frame_hash": "a25e3bd2d1702d0a74938a6d08804e52f8df161181e5674440f4ddeed1da70b8",
+      "prev": "23dd23e4ddd81df3f948b5867b25c12fe2ccb991ea2415136cbd6fe8b6c48e3b",
+      "prev_wave": null
     },
     {
       "seq": 5,
       "path": "frames/5.json",
-      "ts": "2026-02-13T00:00:00Z",
-      "kind": "body.pulse.reconstructed",
-      "sha256": "322640307145038f84db1d2dcfc5b0626c47b401a0d598e7d2240e15c3ca8e3f",
-      "parent_sha": "2d16b8dfd3059140028bb03e6f0be94cd3b01e97a76111c59c3949beb5981f9c"
+      "utc": "2026-02-13T00:00:00.000Z",
+      "kind": "body.pulse-reconstructed",
+      "payload_hash": "517552a3c94355b48e1423216b129c4f257bf5f4d4db55bbb65ac02fa766fc40",
+      "frame_hash": "939af80f935b536611fd09f284c03a6b67f447cff4221c2fa7cd9b84a5bc6846",
+      "prev": "7f447580b2808be7dd1bb2e291a85868b9ed6f5d36ec481b20235bab1c5507e1",
+      "prev_wave": null
     },
     {
       "seq": 6,
       "path": "frames/6.json",
-      "ts": "2026-04-03T00:00:00Z",
-      "kind": "body.pulse.reconstructed",
-      "sha256": "c4d777d8bb1bccc5dc3c85629f25da76e82166370dc15b67ca26198d4bcf275c",
-      "parent_sha": "322640307145038f84db1d2dcfc5b0626c47b401a0d598e7d2240e15c3ca8e3f"
+      "utc": "2026-04-03T00:00:00.000Z",
+      "kind": "body.pulse-reconstructed",
+      "payload_hash": "64df9a13ef1499f232e43d300f67c4f0cf768715578a35e8605f59f5d3c6d599",
+      "frame_hash": "bd199b39e23ec16e567dc8060d80897aa95592c1f9d2f2519761c2b16778bcee",
+      "prev": "517552a3c94355b48e1423216b129c4f257bf5f4d4db55bbb65ac02fa766fc40",
+      "prev_wave": null
     },
     {
       "seq": 7,
       "path": "frames/7.json",
-      "ts": "2026-04-17T00:00:00Z",
-      "kind": "body.pulse.reconstructed",
-      "sha256": "6072ac16564bd1a3786b8fe3c4feab05e22f9600e74105a4e96c58bd4a49b1f9",
-      "parent_sha": "c4d777d8bb1bccc5dc3c85629f25da76e82166370dc15b67ca26198d4bcf275c"
+      "utc": "2026-04-17T00:00:00.000Z",
+      "kind": "body.pulse-reconstructed",
+      "payload_hash": "8ada3541f5607573778c2a29d3390050037bca7e758a5213ad48a04aaf4137e0",
+      "frame_hash": "e1568688c428fd80fadd30550b33ee8c8fb0ed01fe64f5ee697e87cff3c63c40",
+      "prev": "64df9a13ef1499f232e43d300f67c4f0cf768715578a35e8605f59f5d3c6d599",
+      "prev_wave": null
     },
     {
       "seq": 8,
       "path": "frames/8.json",
-      "ts": "2026-04-27T00:00:00Z",
-      "kind": "body.pulse.reconstructed",
-      "sha256": "8717192800351f1173c61f6fea6bead9669f7b545896096b3364fb9ca8a518b7",
-      "parent_sha": "6072ac16564bd1a3786b8fe3c4feab05e22f9600e74105a4e96c58bd4a49b1f9"
+      "utc": "2026-04-27T00:00:00.000Z",
+      "kind": "body.pulse-reconstructed",
+      "payload_hash": "264f4a59ed10370e1f4832a6763fd3cbdbfa8fbbaff8351d496f27583e9cdc9d",
+      "frame_hash": "33e5f5e9617c0221cffb7d58b9e6ff1e51ad6622fe0e33b7093b05a368b87c2c",
+      "prev": "8ada3541f5607573778c2a29d3390050037bca7e758a5213ad48a04aaf4137e0",
+      "prev_wave": null
     },
     {
       "seq": 9,
       "path": "frames/9.json",
-      "ts": "2026-05-06T00:00:00Z",
-      "kind": "body.pulse.reconstructed",
-      "sha256": "0b7a2529bf26a7854aa3034a21a5f93861fa0781b29f57909ed85d0aa0882fd8",
-      "parent_sha": "8717192800351f1173c61f6fea6bead9669f7b545896096b3364fb9ca8a518b7"
+      "utc": "2026-05-06T00:00:00.000Z",
+      "kind": "body.pulse-reconstructed",
+      "payload_hash": "7e72868211d4a168eee722be6263b87ad1d6252da7294aaf90c9a328da653683",
+      "frame_hash": "63fbf08fedbb8a4f618614632e533aeccae40b86c293a37ba6a5315c76ddf98f",
+      "prev": "264f4a59ed10370e1f4832a6763fd3cbdbfa8fbbaff8351d496f27583e9cdc9d",
+      "prev_wave": null
     },
     {
       "seq": 10,
       "path": "frames/10.json",
-      "ts": "2026-05-11T00:00:00Z",
-      "kind": "body.pulse.reconstructed",
-      "sha256": "ba5be06c7b4ea53779ef0c8fb87f71c4977c2cace369fc2a4a11e242dde63e6e",
-      "parent_sha": "0b7a2529bf26a7854aa3034a21a5f93861fa0781b29f57909ed85d0aa0882fd8"
+      "utc": "2026-05-11T00:00:00.000Z",
+      "kind": "body.pulse-reconstructed",
+      "payload_hash": "997297b8257096c8cee4425810a2fb21f8ca4d6bdf50ee2bfe643ed2c80182a2",
+      "frame_hash": "8de8e252976caa564b0ca129a7ee0cf344edf1fed1dca988442912fbfb1d1be4",
+      "prev": "7e72868211d4a168eee722be6263b87ad1d6252da7294aaf90c9a328da653683",
+      "prev_wave": null
     },
     {
       "seq": 11,
       "path": "frames/11.json",
-      "ts": "2026-05-18T00:00:00Z",
-      "kind": "body.pulse.reconstructed",
-      "sha256": "831bb58e02da5ba1fc7455a134caf6861d53b2438e38f654561755a1edb23588",
-      "parent_sha": "ba5be06c7b4ea53779ef0c8fb87f71c4977c2cace369fc2a4a11e242dde63e6e"
+      "utc": "2026-05-18T00:00:00.000Z",
+      "kind": "body.pulse-reconstructed",
+      "payload_hash": "9b3b8d7061b621ecc1473199aa79a9d66016df0280687b5bad2bf2f7a4fa2f34",
+      "frame_hash": "40aebd0b2e2fb8ee50ed7961f6dfe8939884d2b55aa1290089552d5dafae53dd",
+      "prev": "997297b8257096c8cee4425810a2fb21f8ca4d6bdf50ee2bfe643ed2c80182a2",
+      "prev_wave": null
     },
     {
       "seq": 12,
       "path": "frames/12.json",
-      "ts": "2026-05-22T00:00:00Z",
-      "kind": "body.pulse.reconstructed",
-      "sha256": "2867af1a5e5af239d1ff68e8ff6dd277b96b29cea6645a6446794691422db799",
-      "parent_sha": "831bb58e02da5ba1fc7455a134caf6861d53b2438e38f654561755a1edb23588"
+      "utc": "2026-05-22T00:00:00.000Z",
+      "kind": "body.pulse-reconstructed",
+      "payload_hash": "fa94fb244b2508480358baf6632bc36fca031ac5319c8004184b7fc19f6de42c",
+      "frame_hash": "54c45d9b644d856d32c9d3e893c583c65bdd9175340feaf7f306b82d5ac7eea8",
+      "prev": "9b3b8d7061b621ecc1473199aa79a9d66016df0280687b5bad2bf2f7a4fa2f34",
+      "prev_wave": null
     },
     {
       "seq": 13,
       "path": "frames/13.json",
-      "ts": "2026-05-26T00:00:00Z",
-      "kind": "body.pulse.reconstructed",
-      "sha256": "b2497d81b92e5f12e506735447aed51102a43688c3dd597f678be78b48d90d53",
-      "parent_sha": "2867af1a5e5af239d1ff68e8ff6dd277b96b29cea6645a6446794691422db799"
+      "utc": "2026-05-26T00:00:00.000Z",
+      "kind": "body.pulse-reconstructed",
+      "payload_hash": "42412814d20189047b1b914d3d7d9c8d1b688b7945a05df86de0e55c7b355cc0",
+      "frame_hash": "8d52cd616b8689452b755bb1baa3a0ac9ebf3c9f00c8bb8ac38653c4ec37c9fe",
+      "prev": "fa94fb244b2508480358baf6632bc36fca031ac5319c8004184b7fc19f6de42c",
+      "prev_wave": null
     },
     {
       "seq": 14,
       "path": "frames/14.json",
-      "ts": "2026-05-27T00:00:00Z",
-      "kind": "body.pulse.reconstructed",
-      "sha256": "e7f7a89529d14997f8f944f6ad33ac5793cdcbac4afd8824fea370f54cd72dd7",
-      "parent_sha": "b2497d81b92e5f12e506735447aed51102a43688c3dd597f678be78b48d90d53"
+      "utc": "2026-05-27T00:00:00.000Z",
+      "kind": "body.pulse-reconstructed",
+      "payload_hash": "8653faa1a69a328cf9da661500e134ef63d13edf9e7089816c288fa8b4119f55",
+      "frame_hash": "25b181bbe0c45aee95d78550a4aae5ca18b088a3d48d4a524e60c748c18fcf48",
+      "prev": "42412814d20189047b1b914d3d7d9c8d1b688b7945a05df86de0e55c7b355cc0",
+      "prev_wave": null
     },
     {
       "seq": 15,
       "path": "frames/15.json",
-      "ts": "2026-06-02T00:00:00Z",
-      "kind": "body.pulse.reconstructed",
-      "sha256": "29b96e123d27cd5f96b1e2dde29b83655df04af028c5b30d87506e61061e8e50",
-      "parent_sha": "e7f7a89529d14997f8f944f6ad33ac5793cdcbac4afd8824fea370f54cd72dd7"
+      "utc": "2026-06-02T00:00:00.000Z",
+      "kind": "body.pulse-reconstructed",
+      "payload_hash": "74f06b3640ec02f83664dbfa12e0d703c583b0efd2ecdd7534671cb134849774",
+      "frame_hash": "dc018bedbf2d8c3f7f79e078015e8c23931eed86fd5157a6944978ce203875ab",
+      "prev": "8653faa1a69a328cf9da661500e134ef63d13edf9e7089816c288fa8b4119f55",
+      "prev_wave": null
     },
     {
       "seq": 16,
       "path": "frames/16.json",
-      "ts": "2026-06-03T00:00:00Z",
-      "kind": "body.pulse.reconstructed",
-      "sha256": "01d40d7873c6c24206ca1ca55f18e764130bbd84116844366c3469337324f1d7",
-      "parent_sha": "29b96e123d27cd5f96b1e2dde29b83655df04af028c5b30d87506e61061e8e50"
+      "utc": "2026-06-03T00:00:00.000Z",
+      "kind": "body.pulse-reconstructed",
+      "payload_hash": "21359bd5afa00b526bb35deb6e4ba16cb047ee9c3aa53dddd89e7309a55f067f",
+      "frame_hash": "f748c6b0c7ebd92f7266e72b404f8bf22a9c7181eb1c66fe0e623a5e0df3aaf0",
+      "prev": "74f06b3640ec02f83664dbfa12e0d703c583b0efd2ecdd7534671cb134849774",
+      "prev_wave": null
     },
     {
       "seq": 17,
       "path": "frames/17.json",
-      "ts": "2026-06-17T00:00:00Z",
-      "kind": "body.pulse.reconstructed",
-      "sha256": "0e7528bfbcd092f75832a6520af8ba3406b94a432333b362f1315eeee5782266",
-      "parent_sha": "01d40d7873c6c24206ca1ca55f18e764130bbd84116844366c3469337324f1d7"
+      "utc": "2026-06-17T00:00:00.000Z",
+      "kind": "body.pulse-reconstructed",
+      "payload_hash": "ca33c7fb106e30c986e8c7f55381bde8f445c6300b68d17d8c794807bc00941d",
+      "frame_hash": "46c3747d10c1c909d816ccd285efe8a1d81f6126c8e902783e8fc6ddcd7e862c",
+      "prev": "21359bd5afa00b526bb35deb6e4ba16cb047ee9c3aa53dddd89e7309a55f067f",
+      "prev_wave": null
     },
     {
       "seq": 18,
       "path": "frames/18.json",
-      "ts": "2026-06-22T00:00:00Z",
-      "kind": "body.pulse.reconstructed",
-      "sha256": "abaf5afab4808710e1444ec8744524ea50187bc7536545349a2ecea15db6a6da",
-      "parent_sha": "0e7528bfbcd092f75832a6520af8ba3406b94a432333b362f1315eeee5782266"
+      "utc": "2026-06-22T00:00:00.000Z",
+      "kind": "body.pulse-reconstructed",
+      "payload_hash": "c96fcf05a9164096bd6f696916bf5e9f2ab278a9cdc21be713d6b9644fd53e73",
+      "frame_hash": "20fcdd723b1d4b0bb23ff2d880f9451fbc10f11b5c9f33f3885dcdcd7cf5a631",
+      "prev": "ca33c7fb106e30c986e8c7f55381bde8f445c6300b68d17d8c794807bc00941d",
+      "prev_wave": null
     },
     {
       "seq": 19,
       "path": "frames/19.json",
-      "ts": "2026-06-29T00:00:00Z",
-      "kind": "body.pulse.reconstructed",
-      "sha256": "e512cadbd0bc100efb694c5ce50b3c9b992638a37aaa1841c7c194c7cee42d05",
-      "parent_sha": "abaf5afab4808710e1444ec8744524ea50187bc7536545349a2ecea15db6a6da"
+      "utc": "2026-06-29T00:00:00.000Z",
+      "kind": "body.pulse-reconstructed",
+      "payload_hash": "05af90e34256fda4e2aa353c047bf438c9efb05bb223f851e18bebf4eb9de6d7",
+      "frame_hash": "8052f05c7694c5876a5a9697ed37dad4b3fc1f6fa203565e222933e3b694bbf2",
+      "prev": "c96fcf05a9164096bd6f696916bf5e9f2ab278a9cdc21be713d6b9644fd53e73",
+      "prev_wave": null
     },
     {
       "seq": 20,
       "path": "frames/20.json",
-      "ts": "2026-07-06T00:00:00Z",
-      "kind": "body.pulse.reconstructed",
-      "sha256": "179d6e124917785f538eb77e3e355a99df3c657b0287e615c45ea72bf8fb4f0b",
-      "parent_sha": "e512cadbd0bc100efb694c5ce50b3c9b992638a37aaa1841c7c194c7cee42d05"
+      "utc": "2026-07-06T00:00:00.000Z",
+      "kind": "body.pulse-reconstructed",
+      "payload_hash": "d807db0eb62787df983e1a4b11f98f4092ab4763e727c3e6cad8e3a033e93359",
+      "frame_hash": "b63d783ecacf33cec00c9e3b3a050aaeface3088ae7d164361ec5bc82ab4bf46",
+      "prev": "05af90e34256fda4e2aa353c047bf438c9efb05bb223f851e18bebf4eb9de6d7",
+      "prev_wave": null
     },
     {
       "seq": 21,
       "path": "frames/21.json",
-      "ts": "2026-07-08T23:24:20.283Z",
+      "utc": "2026-07-08T23:24:20.283Z",
       "kind": "body.pulse",
-      "sha256": "99bd52ee4a03f9f4eb4b565f3ddc0a6c65511eb7191890ec49a786f2a55fe7f3",
-      "parent_sha": "179d6e124917785f538eb77e3e355a99df3c657b0287e615c45ea72bf8fb4f0b"
+      "payload_hash": "24fe782f3fe9198fd8068c76e9023878fab0d349f5e408711676264b1a21a64b",
+      "frame_hash": "5cb851dc65f5ae55f3879d436c133b66bf325eeb21cdef7442d2ff326629d520",
+      "prev": "d807db0eb62787df983e1a4b11f98f4092ab4763e727c3e6cad8e3a033e93359",
+      "prev_wave": null
     },
     {
       "seq": 22,
       "path": "frames/22.json",
-      "ts": "2026-07-08T23:24:35.633Z",
+      "utc": "2026-07-08T23:24:35.633Z",
       "kind": "body.pulse",
-      "sha256": "1793ae53d56f3b16a48a81d117612bb41b93a1eea00e05a2c4ee3a12e93ad0ee",
-      "parent_sha": "99bd52ee4a03f9f4eb4b565f3ddc0a6c65511eb7191890ec49a786f2a55fe7f3"
+      "payload_hash": "aea322ea9a77dfa4348c53ae4e0769b6ea61cb559749ed4ca332f0758177adee",
+      "frame_hash": "1df936922c86b4254169742eec4ffef8784e43681836a81a991b272c1d846905",
+      "prev": "24fe782f3fe9198fd8068c76e9023878fab0d349f5e408711676264b1a21a64b",
+      "prev_wave": null
     },
     {
       "seq": 23,
       "path": "frames/23.json",
-      "ts": "2026-07-08T23:53:56.973Z",
+      "utc": "2026-07-08T23:53:56.973Z",
       "kind": "body.pulse",
-      "sha256": "496b13af4e8aa15689fbe136cb7fb2bb2989e90f9592f8d37b09fb8e8b8b9e8c",
-      "parent_sha": "1793ae53d56f3b16a48a81d117612bb41b93a1eea00e05a2c4ee3a12e93ad0ee"
+      "payload_hash": "059be76a6917994b0157f9daee260a94f798231129bf52cd4eb46ddb9f7aa5bf",
+      "frame_hash": "030dba7249261e2d67c1af01b826617542c44dbb27f1523c1558faef37fe64b0",
+      "prev": "aea322ea9a77dfa4348c53ae4e0769b6ea61cb559749ed4ca332f0758177adee",
+      "prev_wave": null
     },
     {
       "seq": 24,
       "path": "frames/24.json",
-      "ts": "2026-07-15T00:49:24.623Z",
+      "utc": "2026-07-15T00:49:24.623Z",
       "kind": "body.pulse",
-      "sha256": "b7873ea897c83ac6de140005671f815280954f959c75bc3e5159c3ecfbe3d4ac",
-      "parent_sha": "496b13af4e8aa15689fbe136cb7fb2bb2989e90f9592f8d37b09fb8e8b8b9e8c"
+      "payload_hash": "c51632aae92b76b2eaea061ad969441b4dfef42100bd8e0abcc43cdd447c868a",
+      "frame_hash": "704337ba474c80f8c4979ea7b9d8b56bbdc70086b98295c33041fc1500981f5e",
+      "prev": "059be76a6917994b0157f9daee260a94f798231129bf52cd4eb46ddb9f7aa5bf",
+      "prev_wave": null
     },
     {
       "seq": 25,
       "path": "frames/25.json",
-      "ts": "2026-07-15T01:24:58.731Z",
+      "utc": "2026-07-15T01:24:58.731Z",
       "kind": "body.pulse",
-      "sha256": "6dfe755a3283fcc44accbe199de29709f33533a5eeba31f67b80acc624dd7b40",
-      "parent_sha": "b7873ea897c83ac6de140005671f815280954f959c75bc3e5159c3ecfbe3d4ac"
+      "payload_hash": "fb54dacd1833a39e5d74c3f6546d6ddd151826ca1bdca55f6c6d1e95214c4c1a",
+      "frame_hash": "5cd6774d92a631c176b42bf06291464fb4dfc1f82d12f9233f326fdc62fdc394",
+      "prev": "c51632aae92b76b2eaea061ad969441b4dfef42100bd8e0abcc43cdd447c868a",
+      "prev_wave": null
     },
     {
       "seq": 26,
       "path": "frames/26.json",
-      "ts": "2026-07-15T01:41:53.343Z",
+      "utc": "2026-07-15T01:41:53.343Z",
       "kind": "body.pulse",
-      "sha256": "13120453768523d9b8f6faf55993d640e7fe51f4fe333af1dd1ab107a6351d6d",
-      "parent_sha": "6dfe755a3283fcc44accbe199de29709f33533a5eeba31f67b80acc624dd7b40"
+      "payload_hash": "464e291550d37ff86fff3e181c98f306c75fbfccbfcb909ec740f23ec89e1987",
+      "frame_hash": "6da8f0033fb943dcc75d8b2418cba668f7344025011a3040db7e6af31b624285",
+      "prev": "fb54dacd1833a39e5d74c3f6546d6ddd151826ca1bdca55f6c6d1e95214c4c1a",
+      "prev_wave": null
     },
     {
       "seq": 27,
       "path": "frames/27.json",
-      "ts": "2026-07-15T02:12:32.701Z",
+      "utc": "2026-07-15T02:12:32.701Z",
       "kind": "body.pulse",
-      "sha256": "2b525e67f3d49fe1b8d1266a81746c77feee34c31747d66655ea62de8b5e041d",
-      "parent_sha": "13120453768523d9b8f6faf55993d640e7fe51f4fe333af1dd1ab107a6351d6d"
+      "payload_hash": "0e0eba2ca4d668bdbc786c6457fe8a526f74c05aa43428442b7872cdf58ad5ba",
+      "frame_hash": "4ad1143bcc254cc8a84db30948ba9762b7d18be36f80cdbad1b2ba6ecb21e2cd",
+      "prev": "464e291550d37ff86fff3e181c98f306c75fbfccbfcb909ec740f23ec89e1987",
+      "prev_wave": null
     },
     {
       "seq": 28,
       "path": "frames/28.json",
-      "ts": "2026-07-15T09:22:58.171Z",
+      "utc": "2026-07-15T09:22:58.171Z",
       "kind": "body.pulse",
-      "sha256": "639faa11008b28f7348ce7d1b200d7f89921cc2c8c47bc3fed3bb2d59f149048",
-      "parent_sha": "2b525e67f3d49fe1b8d1266a81746c77feee34c31747d66655ea62de8b5e041d"
+      "payload_hash": "ac1699a2c2edd905226f7b18b729a623904d74763a5568555b1c9fc49752c33a",
+      "frame_hash": "e475271f6a4c7e6ad506eb9458ea6145f4f2b1e6e2a1db8833e906acba4cbf78",
+      "prev": "0e0eba2ca4d668bdbc786c6457fe8a526f74c05aa43428442b7872cdf58ad5ba",
+      "prev_wave": null
     }
   ]
 }

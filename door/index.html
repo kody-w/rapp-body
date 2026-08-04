@@ -454,8 +454,8 @@ footer {
     const mode = memoryMode(frame);
     const link = make("a", "receipt");
     link.href = `../frames/${frame.seq}.json`;
-    link.textContent = `[seq ${frame.seq} · ${String(frame.ts).slice(0, 10)} · ${mode} · ${String(frame.sha256).slice(0, 8)}]`;
-    link.setAttribute("aria-label", `Receipt: frame ${frame.seq}, ${String(frame.ts).slice(0, 10)}, ${mode}, sha256 ${String(frame.sha256).slice(0, 8)}`);
+    link.textContent = `[seq ${frame.seq} · ${String(frame.utc).slice(0, 10)} · ${mode} · ${String(frame.payload_hash).slice(0, 8)}]`;
+    link.setAttribute("aria-label", `Receipt: frame ${frame.seq}, ${String(frame.utc).slice(0, 10)}, ${mode}, payload hash ${String(frame.payload_hash).slice(0, 8)}`);
     return link;
   }
 
@@ -537,7 +537,7 @@ footer {
 
   function verifyBirthPin(frame) {
     const pin = state.identity && state.identity.born_of_frame;
-    if (!pin || frame.seq !== pin.seq || frame.sha256 !== pin.sha256) {
+    if (!pin || frame.seq !== pin.seq || frame.payload_hash !== pin.payload_hash) {
       throw new Error("born_of_frame pin does not match its frame");
     }
   }
@@ -588,7 +588,7 @@ footer {
       && cradle.payload.census.repos[0] ? cradle.payload.census.repos[0].name : "RAPP";
     addClaim(root, [
       make("span", "memory-label", "reconstructed"), " ",
-      `The cradle is dated ${String(cradle.ts).slice(0, 10)}; ${firstRepo} is the one recorded organ.`
+      `The cradle is dated ${String(cradle.utc).slice(0, 10)}; ${firstRepo} is the one recorded organ.`
     ], cradle);
   }
 
@@ -656,7 +656,7 @@ footer {
     if (!monthMatch) return null;
     const month = MONTHS[monthMatch[1].toLowerCase()];
     const day = Number(monthMatch[2]);
-    const latestYear = Number(String(state.index.head.ts).slice(0, 4));
+    const latestYear = Number(String(state.index.head.utc).slice(0, 4));
     const year = monthMatch[3] ? Number(monthMatch[3]) : latestYear;
     const parsed = new Date(Date.UTC(year, month, day, 12));
     if (parsed.getUTCFullYear() !== year || parsed.getUTCMonth() !== month || parsed.getUTCDate() !== day) {
@@ -673,9 +673,9 @@ footer {
   function resolveDate(request) {
     let exact;
     if (!request.explicitYear && request.monthDay) {
-      exact = state.index.frames.filter((meta) => String(meta.ts).slice(5, 10) === request.monthDay);
+      exact = state.index.frames.filter((meta) => String(meta.utc).slice(5, 10) === request.monthDay);
     } else {
-      exact = state.index.frames.filter((meta) => String(meta.ts).slice(0, 10) === request.date);
+      exact = state.index.frames.filter((meta) => String(meta.utc).slice(0, 10) === request.date);
     }
     if (exact.length) return { meta: exact[exact.length - 1], exact: true };
 
@@ -683,7 +683,7 @@ footer {
     let nearest = null;
     let nearestDistance = Number.POSITIVE_INFINITY;
     for (const meta of state.index.frames) {
-      const distance = Math.abs(Date.parse(meta.ts) - target);
+      const distance = Math.abs(Date.parse(meta.utc) - target);
       if (distance < nearestDistance || (distance === nearestDistance && meta.seq > nearest.seq)) {
         nearest = meta;
         nearestDistance = distance;
@@ -705,7 +705,7 @@ footer {
         return;
       }
       frame = await getFrame(request.seq);
-      addClaim(root, `Frame ${frame.seq} is the ${memoryMode(frame)} slice for ${String(frame.ts).slice(0, 10)}.`, frame);
+      addClaim(root, `Frame ${frame.seq} is the ${memoryMode(frame)} slice for ${String(frame.utc).slice(0, 10)}.`, frame);
     } else {
       const resolved = resolveDate(request);
       if (!resolved) {
@@ -714,7 +714,7 @@ footer {
       }
       frame = await getFrame(resolved.meta.seq);
       const wording = resolved.exact ? "The latest recorded slice on" : "The nearest recorded slice to";
-      addClaim(root, `${wording} ${request.date} is frame ${frame.seq}, dated ${String(frame.ts).slice(0, 10)}.`, frame);
+      addClaim(root, `${wording} ${request.date} is frame ${frame.seq}, dated ${String(frame.utc).slice(0, 10)}.`, frame);
     }
     const events = frame.payload && Array.isArray(frame.payload.events) ? frame.payload.events : [];
     if (!events.length) {
@@ -761,14 +761,14 @@ footer {
     const frame = await getFrame(state.identity.born_of_frame.seq);
     verifyBirthPin(frame);
     const cradle = await getFrame(0);
-    addClaim(root, "Fetch a frame, canonicalize its payload with recursively sorted object keys, recompute sha256, then follow parent_sha to the preceding frame.", frame);
-    addClaim(root, "The cradle closes the walk with parent_sha null.", cradle);
+    addClaim(root, "Fetch a frame, recompute its rapp/1 particle and wave hashes, then follow prev to the preceding payload hash.", frame);
+    addClaim(root, "The cradle closes the walk with prev null.", cradle);
     const verifier = make("a", "", "tools/verify-chain.mjs");
     verifier.href = "../tools/verify-chain.mjs";
     addClaim(root, [verifier, " performs the integrity, linkage, sequence, time, and provenance checks."], frame);
     addClaim(root, [
       `Herald's born_of_frame pin names frame ${frame.seq} at `,
-      make("code", "", frame.sha256),
+      make("code", "", frame.payload_hash),
       "; matching that pin makes this door's parent moment checkable."
     ], frame);
   }
@@ -820,7 +820,7 @@ footer {
       grouped.get(ref.frame.seq).events.push(ref.event);
     }
     return Array.from(grouped.values()).map(({ frame, events }) => [
-      `FRAME seq=${frame.seq} date=${String(frame.ts).slice(0, 10)} mode=${memoryMode(frame)} sha256=${frame.sha256} parent_sha=${frame.parent_sha}`,
+      `FRAME seq=${frame.seq} date=${String(frame.utc).slice(0, 10)} mode=${memoryMode(frame)} payload_hash=${frame.payload_hash} frame_hash=${frame.frame_hash} prev=${frame.prev}`,
       ...events.map((event) => `EVENT type=${event.type} text=${JSON.stringify(eventText(event))}`)
     ].join("\n")).join("\n\n");
   }
@@ -1003,7 +1003,7 @@ footer {
       const bornPin = byId("bornPin");
       bornPin.href = `../frames/${identity.born_of_frame.seq}.json`;
       bornPin.textContent = `born of frame ${identity.born_of_frame.seq}`;
-      bornPin.title = `sha256 ${identity.born_of_frame.sha256}`;
+      bornPin.title = `payload_hash ${identity.born_of_frame.payload_hash}`;
       await renderIntro(root);
       reading.remove();
       setBusy(false);

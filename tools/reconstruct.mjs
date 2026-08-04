@@ -4,8 +4,8 @@
 // The cradle is reachable: git already remembers when every organ was born. This tool
 // mines real history — each cataloged repo's created_at (GitHub API) plus the canon
 // milestones the grail data itself evidences (Eternity ratification, the spine/foundation
-// content-lock, the twin going DOG-online) — and emits `body.pulse.reconstructed` frames
-// in CHRONOLOGICAL order, seq 0..N-1, chained by parent_sha. Each frame carries its
+// content-lock, the twin going DOG-online) — and emits `body.pulse-reconstructed` frames
+// in CHRONOLOGICAL order, seq 0..N-1, chained by prev. Each frame carries its
 // evidence (the API fields / commit shas / URLs it was derived from) and NEVER claims
 // witness; its census is explicitly partial (census_basis).
 //
@@ -28,6 +28,7 @@ import {
 const DRY = process.argv.includes("--dry-run");
 const RAW = "https://raw.githubusercontent.com";
 const dayTs = (d) => `${String(d).slice(0, 10)}T00:00:00Z`;
+const dayUtc = (d) => `${String(d).slice(0, 10)}T00:00:00.000Z`;
 const daysBetween = (a, b) => Math.abs((new Date(a) - new Date(b)) / 86400000);
 
 // ---- load the census + its birth dates ------------------------------------------------
@@ -108,12 +109,12 @@ function canonMilestones(spec, spine) {
       evidence: [`rapp-spine registry.json.generated=${spineGen} @ ${spineUrl}`, `rapp-spine foundation.json @ ${foundationUrl}`],
     });
   }
-  // The twin goes DOG-online — the first conformant rapp-frame/2.0 biography in the
+  // The twin goes DOG-online — the predecessor biography whose pulse pattern this body
   // ecosystem; the exact organ the body now grows. Evidenced by twin frame 1.
   list.push({
     date: "2026-07-06",
     id: "twin-dog-online",
-    text: "kody-w/twin broadcasts the first conformant rapp-frame/2.0 pulse (\"DOG online\"): SHA-chained public bones. The body adopts this same organ at ecosystem scale.",
+    text: "kody-w/twin broadcasts its \"DOG online\" pulse: hash-chained public bones. The body adopts this same organ at ecosystem scale.",
     evidence: [
       "twin frames/1.json sha256=52a59f1f23c039349a8c78024923d295a501e96f9337fb72cb8b36489c94894d",
       `${RAW}/kody-w/twin/main/frames/1.json`,
@@ -160,7 +161,7 @@ function build(rows, born, unreachable, spec, spine) {
 
   const frames = [];
   const cumulative = new Map(); // name -> repo row (with created_at)
-  let seq = 0, parent = null;
+  let seq = 0, head = null;
 
   for (const step of steps) {
     const bornNames = [];
@@ -203,10 +204,10 @@ function build(rows, born, unreachable, spec, spine) {
     };
 
     const frame = buildFrame({
-      kind: KIND_RECONSTRUCTED, seq, ts: dayTs(step.date), payload, parent_sha: parent,
+      kind: KIND_RECONSTRUCTED, seq, utc: dayUtc(step.date), payload, head,
     });
     frames.push(frame);
-    parent = frame.sha256;
+    head = frame;
     seq++;
   }
   return frames;
@@ -236,7 +237,7 @@ function build(rows, born, unreachable, spec, spine) {
   console.log(`\nplanned ${frames.length} reconstructed frames:`);
   for (const f of frames) {
     const ev = f.payload.events.map((e) => e.type === "birth" ? `+${e.repos.length}` : `canon:${e.id}`).join(" ");
-    console.log(`  [${String(f.seq).padStart(2)}] ${f.ts.slice(0, 10)}  census=${String(f.payload.census.count).padStart(2)}  ${ev}`);
+    console.log(`  [${String(f.seq).padStart(2)}] ${f.utc.slice(0, 10)}  census=${String(f.payload.census.count).padStart(2)}  ${ev}`);
   }
 
   if (DRY) { console.log("\n--dry-run: wrote nothing."); return; }
@@ -246,6 +247,6 @@ function build(rows, born, unreachable, spec, spine) {
   for (const f of frames) writeFrame(f);
   writeIndex(frames);
   console.log(`\nwrote frames/0.json … frames/${frames.length - 1}.json + frames/index.json`);
-  console.log(`chain head (reconstructed): seq ${frames.length - 1}  sha256 ${frames[frames.length - 1].sha256.slice(0, 16)}…`);
-  console.log(`twin_id: ${readBodyId()}`);
+  console.log(`chain head (reconstructed): seq ${frames.length - 1}  payload ${frames[frames.length - 1].payload_hash.slice(0, 16)}…  wave ${frames[frames.length - 1].frame_hash.slice(0, 16)}…`);
+  console.log(`stream_id: ${readBodyId()}`);
 })();
