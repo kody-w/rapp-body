@@ -1,32 +1,19 @@
-// tools/_frame.mjs — body-frame primitives (zero npm deps, Node crypto only).
-//
-// A body frame is the atomic slice the RAPP organism broadcasts. It conforms to
-// rapp-frame/2.0 EXACTLY as kody-w/twin/frames/*.json publishes it:
-//
-//   { spec, kind, seq, ts, twin_id, kernel_version, payload, sha256, parent_sha, sig }
-//
-// The frame is CONTENT-ADDRESSED: sha256 over the canonical form of its PAYLOAD.
-// A twin engineer will recognize `canonicalize()` below — it is byte-for-byte the
-// deterministic sorted-key JSON from twin/tools/_frame.mjs. Reproducing twin's real
-// frames 0.json / 1.json proved the rule:  sha256 === sha256(canonicalize(payload)).
-// parent_sha chains those payload-hashes into the worldline (rapp-eternity/1.0 at
-// body scale: the chain IS the identity, a frame is just where you cut it).
-//
-// Signatures are OPTIONAL (sig:null) — chain integrity comes from the sha256 links,
-// same as twin's genesis frame. Keypair signing can be layered later without a fork.
+// tools/_frame.mjs — body frame construction, persistence, and pulse helpers.
 
 import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import {
+  SPEC, KINDS, canonical, buildFrame as buildRapp1Frame, parseJsonExact, verifyFrame,
+} from "./_rapp1.mjs";
 
-export const SPEC = "rapp-frame/2.0";
+export { SPEC };
 export const KIND_WITNESSED = "body.pulse";
-export const KIND_RECONSTRUCTED = "body.pulse.reconstructed";
-export const KERNEL_VERSION = "0.6.0"; // grail kernel of record (rapp-agent/1.0, v0.6.0)
+export const KIND_RECONSTRUCTED = "body.pulse-reconstructed";
 
 // REPO_ROOT is this repo's root (tools/ lives directly under it). RAPP_BODY_ROOT
-// overrides it so a ceremony can run against a throwaway body in a temp dir without
+// overrides it so a ceremony can run against a throwaway body without
 // touching the live frames.
 export const REPO_ROOT = process.env.RAPP_BODY_ROOT
   ? path.resolve(process.env.RAPP_BODY_ROOT)
@@ -34,64 +21,48 @@ export const REPO_ROOT = process.env.RAPP_BODY_ROOT
 export const FRAMES_DIR = path.join(REPO_ROOT, "frames");
 export const RAPPID_PATH = path.join(REPO_ROOT, "rappid.json");
 
-// Deterministic JSON: recursively sort object keys, compact. This is `canonical(frame)`
-// from rapp-frame/2.0 — the same bytes on every machine, so the sha is stable. It is
-// the exact function twin/tools/_frame.mjs uses; keep it identical for interop.
-export function canonicalize(v) {
-  if (v === null || typeof v !== "object") return JSON.stringify(v);
-  if (Array.isArray(v)) return "[" + v.map(canonicalize).join(",") + "]";
-  const keys = Object.keys(v).sort();
-  return "{" + keys.map((k) => JSON.stringify(k) + ":" + canonicalize(v[k])).join(",") + "}";
-}
+export const canonicalize = canonical;
 
 export function sha256Hex(buf) {
   return crypto.createHash("sha256").update(buf).digest("hex");
-}
-
-// The content-address of a frame = sha256 over the canonical form of its payload.
-// (Verified against kody-w/twin/frames/0.json and 1.json.)
-export function digestPayload(payload) {
-  return crypto.createHash("sha256").update(canonicalize(payload), "utf8").digest("hex");
 }
 
 export function sha8(sha) {
   return String(sha).slice(0, 8);
 }
 
-// Eternity identity (CONSTITUTION Art. XXXIV.1, locked 2026-06-03): the 64-hex tail is
-// sha256 of '<owner>/<slug>'. `rappid:@<owner>/<slug>:<64hex>`.
-export function eternityHex(owner, slug) {
-  return crypto.createHash("sha256").update(`${owner}/${slug}`).digest("hex");
-}
-export function eternityRappid(owner, slug) {
-  return `rappid:@${owner}/${slug}:${eternityHex(owner, slug)}`;
-}
-
-// The body's own rappid (twin_id field). Prefer rappid.json; fall back to the derivation.
+// The body's stream identity is minted once in rappid.json. There is deliberately no
+// owner/slug-derived fallback: the canonical suffix is an opaque join key.
 export function readBodyId() {
-  try {
-    const r = JSON.parse(fs.readFileSync(RAPPID_PATH, "utf8"));
-    if (r && typeof r.rappid === "string") return r.rappid;
-  } catch {}
-  return eternityRappid("kody-w", "rapp-body");
+  const record = parseJsonExact(fs.readFileSync(RAPPID_PATH, "utf8"));
+  if (!record || typeof record.rappid !== "string") {
+    throw new Error("rappid.json does not contain a rappid string");
+  }
+  return record.rappid;
 }
 
-// Assemble a full rapp-frame/2.0 frame object with the payload content-address filled in.
-// Field insertion order mirrors twin's published frames exactly, so the file reads the same.
-export function buildFrame({ kind, seq, ts, payload, parent_sha, twin_id, kernel_version }) {
-  const sha256 = digestPayload(payload);
-  return {
-    spec: SPEC,
+// Construct through the protocol primitive, then run the same consumer checklist used by
+// the gate and chain verifier. Non-genesis callers must supply the actual current head.
+export function buildFrame({
+  kind, seq, utc, payload, head = null, prev,
+  stream_id = readBodyId(), prev_wave = null, sig = null,
+}) {
+  if (!KINDS.has(kind)) throw new Error(`unknown rapp/1 frame kind: ${kind}`);
+  const frame = buildRapp1Frame({
     kind,
+    stream_id,
     seq,
-    ts,
-    twin_id: twin_id ?? readBodyId(),
-    kernel_version: kernel_version ?? KERNEL_VERSION,
+    utc,
     payload,
-    sha256,
-    parent_sha: parent_sha ?? null,
-    sig: null,
-  };
+    prev: prev === undefined ? (head ? head.payload_hash : null) : prev,
+    prev_wave,
+    sig,
+  });
+  const checked = verifyFrame(frame, head, { swarm: false, streamId: stream_id });
+  if (!checked.ok) {
+    throw new Error(`constructed frame failed rapp/1 verify step ${checked.step}: ${checked.reason}`);
+  }
+  return frame;
 }
 
 export function frameFileName(seq) {
@@ -108,7 +79,7 @@ export function listFrameFiles(dir = FRAMES_DIR) {
 }
 
 export function readFrameFile(fp) {
-  return JSON.parse(fs.readFileSync(fp, "utf8"));
+  return parseJsonExact(fs.readFileSync(fp, "utf8"));
 }
 
 // Read the whole chain (in seq order) as parsed frame objects.
@@ -128,17 +99,25 @@ export function writeIndex(frames, dir = FRAMES_DIR) {
   const head = frames[frames.length - 1] || null;
   const index = {
     spec: "rapp-frame-index/1.0",
-    twin_id: readBodyId(),
+    stream_id: readBodyId(),
     generated: new Date().toISOString(),
     count: frames.length,
-    head: head ? { seq: head.seq, sha256: head.sha256, ts: head.ts, kind: head.kind } : null,
+    head: head ? {
+      seq: head.seq,
+      payload_hash: head.payload_hash,
+      frame_hash: head.frame_hash,
+      utc: head.utc,
+      kind: head.kind,
+    } : null,
     frames: frames.map((f) => ({
       seq: f.seq,
       path: `frames/${frameFileName(f.seq)}`,
-      ts: f.ts,
+      utc: f.utc,
       kind: f.kind,
-      sha256: f.sha256,
-      parent_sha: f.parent_sha,
+      payload_hash: f.payload_hash,
+      frame_hash: f.frame_hash,
+      prev: f.prev,
+      prev_wave: f.prev_wave,
     })),
   };
   fs.writeFileSync(path.join(dir, "index.json"), JSON.stringify(index, null, 2) + "\n");
@@ -149,10 +128,16 @@ export function writeIndex(frames, dir = FRAMES_DIR) {
 export function writeVitals(frame, health, root = REPO_ROOT) {
   const vitals = {
     spec: "rapp-body-vitals/1.0",
-    twin_id: readBodyId(),
+    stream_id: readBodyId(),
     updated: new Date().toISOString(),
     head: frame
-      ? { seq: frame.seq, sha256: frame.sha256, ts: frame.ts, kind: frame.kind }
+      ? {
+          seq: frame.seq,
+          payload_hash: frame.payload_hash,
+          frame_hash: frame.frame_hash,
+          utc: frame.utc,
+          kind: frame.kind,
+        }
       : null,
     health: health || {},
   };

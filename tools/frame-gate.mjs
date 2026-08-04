@@ -4,7 +4,8 @@
 import fs from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
-import { digestPayload, sha256Hex, FRAMES_DIR } from "./_frame.mjs";
+import { sha256Hex, FRAMES_DIR } from "./_frame.mjs";
+import { parseJsonExact, verifyFrame } from "./_rapp1.mjs";
 
 export const SEALED_LEXICON_SHA = "c7c10ecba56e02eabc86bf178e9d2134cba8ce50338abc3d4d2e5ff2ef4bd51f";
 
@@ -25,15 +26,18 @@ function hasOwn(value, key) {
 
 function validateIndex(index) {
   if (!isObject(index)) return { error: "chain: frames/index.json must contain an object" };
+  if (typeof index.stream_id !== "string") return { error: "chain: frames/index.json stream_id must be a string" };
   if (!isObject(index.head)) return { error: "chain: frames/index.json has no current head" };
   if (!Number.isInteger(index.head.seq)) return { error: "chain: frames/index.json head.seq must be an integer" };
-  if (!HEX64.test(index.head.sha256 || "")) return { error: "chain: frames/index.json head.sha256 must be 64 lowercase hex characters" };
+  if (!HEX64.test(index.head.payload_hash || "")) return { error: "chain: frames/index.json head.payload_hash must be 64 lowercase hex characters" };
+  if (!HEX64.test(index.head.frame_hash || "")) return { error: "chain: frames/index.json head.frame_hash must be 64 lowercase hex characters" };
+  if (typeof index.head.utc !== "string") return { error: "chain: frames/index.json head.utc must be a string" };
   return { index };
 }
 
 function readIndex(indexPath) {
   try {
-    return validateIndex(JSON.parse(fs.readFileSync(indexPath, "utf8")));
+    return validateIndex(parseJsonExact(fs.readFileSync(indexPath, "utf8")));
   } catch (error) {
     return { error: `chain: cannot read valid frames/index.json (${error.message})` };
   }
@@ -187,23 +191,20 @@ export function validateCandidate(candidate, options = {}) {
   }
 
   if (head) {
-    const expectedSeq = head.seq + 1;
-    if (candidate.seq !== expectedSeq) {
-      reasons.push(`chain: candidate.seq ${JSON.stringify(candidate.seq)} must equal head.seq + 1 (${expectedSeq})`);
-    }
-    if (candidate.parent_sha !== head.sha256) {
-      reasons.push(`chain: candidate.parent_sha ${JSON.stringify(candidate.parent_sha)} must equal current head sha256 ${head.sha256}`);
-    }
+    const verified = verifyFrame(
+      candidate,
+      { ...head, stream_id: loaded.index.stream_id },
+      { swarm: false, streamId: loaded.index.stream_id },
+    );
+    if (!verified.ok) reasons.push(`rapp/1 step ${verified.step}: ${verified.reason}`);
+  } else if (!loaded.error) {
+    const verified = verifyFrame(candidate, null, { swarm: false, streamId: loaded.index.stream_id });
+    if (!verified.ok) reasons.push(`rapp/1 step ${verified.step}: ${verified.reason}`);
   }
 
   if (!isObject(candidate.payload)) {
     reasons.push("integrity: candidate.payload must be an object");
   } else {
-    const recomputed = digestPayload(candidate.payload);
-    if (candidate.sha256 !== recomputed) {
-      reasons.push(`integrity: candidate.sha256 ${JSON.stringify(candidate.sha256)} does not match recomputed payload sha256 ${recomputed}`);
-    }
-
     const events = Array.isArray(candidate.payload.events) ? candidate.payload.events : [];
     checkLexicon(candidate.payload, events, reasons);
     checkCensus(candidate.payload, events, reasons);
@@ -215,14 +216,15 @@ export function validateCandidate(candidate, options = {}) {
     reasons,
     head,
     candidateSeq: candidate.seq,
-    candidateSha256: candidate.sha256,
+    candidatePayloadHash: candidate.payload_hash,
+    candidateFrameHash: candidate.frame_hash,
   };
 }
 
 export function validateCandidateFile(candidatePath, options = {}) {
   let candidate;
   try {
-    candidate = JSON.parse(fs.readFileSync(path.resolve(candidatePath), "utf8"));
+    candidate = parseJsonExact(fs.readFileSync(path.resolve(candidatePath), "utf8"));
   } catch (error) {
     return {
       allowed: false,

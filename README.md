@@ -1,13 +1,12 @@
 # rapp-body — the RAPP organism's biography
 
 `kody-w/rapp-body` is the RAPP ecosystem's own **frames repo**: the whole organism recorded
-as a public, sha256-chained sequence of frames — cradle to grave — plus **`player.html`**, a
+as a public, rapp/1 hash-chained sequence of frames — cradle to grave — plus **`player.html`**, a
 flip book that plays the frames so you can watch the body be born, grow, and transform.
 
 One sentence: **`kody-w/twin/frames` is the biography of a twin; this repo is the biography
-of RAPP itself.** Same format (`rapp-frame/2.0`), same chain discipline, same
-public-by-construction rule. Not a new primitive — the twin frame pattern applied at body
-scale (compose, don't invent).
+of RAPP itself.** The live chain uses the ratified `rapp/1` envelope and the same
+public-by-construction discipline at body scale.
 
 The chain runs **reconstructed** frames (git archaeology, the prenatal cradle) →
 **witnessed** frames (live pulses from genesis forward). The film literally develops at
@@ -22,13 +21,15 @@ full colour.
 rapp-body/
 ├── frames/                 # the biography — append-only, chained, content-addressed
 │   ├── 0.json … N.json     #   one frame per slice, named <seq>.json (twin convention)
-│   └── index.json          #   manifest: ONE fetch loads the whole timeline map
+│   ├── index.json          #   manifest: ONE fetch loads the whole timeline map
+│   └── legacy/             #   sealed pre-§7 chain retained byte-for-byte for audit
 ├── vitals.json             # latest-frame pointer + current health rollup (static API)
 ├── rappid.json             # the body's Eternity identity (rapp/1)
 ├── sweeps/latest.json      # optional input: latest mesh-sweep verdict (feeds vitals)
 ├── player.html             # the flip book — self-contained, zero-CDN, watch the body change
 ├── tools/
-│   ├── _frame.mjs          #   frame primitives: canonicalize, digest, build, IO, index/vitals
+│   ├── _rapp1.mjs          #   canonical rapp/1 JCS, hash spaces, build, and verify
+│   ├── _frame.mjs          #   body frame construction, IO, index/vitals, no-churn helper
 │   ├── _gh.mjs             #   zero-dep GitHub access (token-optional, cache-optional)
 │   ├── _census.mjs         #   the cell census: spec.repos ∪ spine registry, deduped, layered
 │   ├── reconstruct.mjs     #   prenatal frames from git history (run once)
@@ -39,47 +40,54 @@ rapp-body/
 
 ---
 
-## The frame format (`rapp-frame/2.0`)
+## The frame format (`rapp/1`)
 
-Every frame is the exact envelope `kody-w/twin/frames/*.json` publishes:
+Every live frame has exactly these 11 keys:
 
 ```json
 {
-  "spec": "rapp-frame/2.0",
-  "kind": "body.pulse" | "body.pulse.reconstructed",
+  "spec": "rapp/1",
+  "kind": "body.pulse" | "body.pulse-reconstructed",
+  "stream_id": "rappid:@kody-w/rapp-body:817839d2…",
   "seq": 21,
-  "ts": "2026-07-08T23:24:35.633Z",
-  "twin_id": "rappid:@kody-w/rapp-body:324197c1…",
-  "kernel_version": "0.6.0",
+  "utc": "2026-07-08T23:24:35.633Z",
   "payload": { … the slice … },
-  "sha256": "…",
-  "parent_sha": "…" | null,
+  "payload_hash": "…",
+  "frame_hash": "…",
+  "prev": "…" | null,
+  "prev_wave": null,
   "sig": null
 }
 ```
 
-**Content-addressing (the canonicalization rule).** A frame's `sha256` is the sha256 of the
-canonical form of its **`payload`**:
+**Canonicalization.** Hash inputs use the exact-value rapp/1 JCS profile: null, booleans,
+integers, strings, arrays, and objects only (no floats). Object keys sort by Unicode code
+point, not JavaScript UTF-16 order.
 
 ```
-sha256  =  sha256( canonicalize(payload) )
-canonicalize(v) = recursively sort object keys, compact JSON
-                  (JSON.stringify per key/value; arrays preserved)
+payload_hash = sha256( utf8("rapp/1:particle") || 0x0A || utf8(canonical(payload)) )
+frame_hash   = sha256( utf8("rapp/1:wave")    || 0x0A ||
+                       utf8(canonical(frame without frame_hash and sig)) )
 ```
 
-This is the same `canonicalize()` twin's `tools/_frame.mjs` uses; it was proven here by
-reproducing twin's real `frames/0.json` and `frames/1.json` byte-for-byte. A signature is
-**optional** and omitted for now (`sig: null`) — chain integrity comes from the sha256 links,
-exactly like twin's genesis frame.
+The two spaces separate the payload particle from its full envelope wave. Signatures are
+optional off-swarm and are currently omitted (`sig: null`).
 
 **Chain rules** (all enforced by `verify-chain.mjs`):
 
 - `seq` is contiguous from 0, no gaps or duplicates.
-- `parent_sha[0] == null`; `parent_sha[n] == sha256[n-1]`.
-- `ts` is monotonic non-decreasing.
+- `prev[0] == null`; `prev[n] == payload_hash[n-1]`.
+- This chain is off-swarm, so every `prev_wave` is `null`. On a swarm it links to the
+  preceding `frame_hash`.
+- `utc` is fixed-millisecond UTC and monotonic non-decreasing.
+- `stream_id` is stable and equals the canonical identity in `rappid.json`.
 - The reconstructed segment is a contiguous **prefix**: no witnessed frame precedes it, and
   no reconstructed frame appears after genesis.
 - Every reconstructed frame carries `payload.provenance.evidence[]` and never claims witness.
+
+`frames/legacy/**` is the sealed pre-§7 `rapp-frame/2.0` chain retained for audit. It is
+verified under its own legacy payload-hash/link rules, and `frames/legacy/SEAL.json` binds
+the canonical legacy head in the `rapp/1:seal` hash space.
 
 ### The payload
 
@@ -179,8 +187,9 @@ keeps the biography honest — a frame means the body actually changed.
 
 Everything is raw-loadable over `raw.githubusercontent.com`, CORS-open, no server:
 
-- **`frames/index.json`** — the manifest: `{ seq, path, ts, kind, sha256, parent_sha }` per
-  frame. One fetch loads the whole timeline; the player walks it.
+- **`frames/index.json`** — the manifest: `{ seq, path, utc, kind, payload_hash,
+  frame_hash, prev, prev_wave }` per frame. One fetch loads the whole timeline; the
+  player walks it.
 - **`vitals.json`** — the latest-frame pointer + a health rollup (spec version,
   mirrors_identical, repo counts, drift, observation gaps).
 - **`frames/<seq>.json`** — each slice, lazy-loaded on demand.
@@ -212,10 +221,9 @@ one-time re-anchor from the earlier (incorrect) `sha256('<owner>/<slug>')` id is
 `_migrated_from` per SPEC.md §2.3.
 
 The identity is the **worldline**, not any single slice: no one frame IS the body — the
-chained sequence is. Because a frame is content-addressed on its **payload** (twin's rule),
-the `twin_id` that labels each frame is an envelope field, not part of the `sha256` — so
-relabeling identity does not and must not rewrite the biography's content hashes. A keypair
-signature is optional and omitted; the sha256 payload links carry integrity today.
+chained sequence is. `stream_id` is outside the payload, so changing it would preserve the
+`payload_hash` but necessarily change the envelope's `frame_hash`. A keypair signature is
+optional off-swarm and omitted here; `prev` carries the particle chain.
 
 ---
 
@@ -238,12 +246,10 @@ from the spec.
 
 ## Conformance
 
-A twin engineer should read `tools/verify-chain.mjs` and recognise `tools/verify-chain.mjs`
-in `kody-w/twin`: it replays every frame in seq order, recomputes the content-address, and
-checks the `parent_sha` linkage — the same hash-trust, PKI-free integrity pattern. The
-`canonicalize()` in `tools/_frame.mjs` is byte-identical to twin's. The frames interoperate
-conceptually with `kody-w/twin/frames`; the only difference is scope — a twin's biography is
-one being, this is the biography of RAPP itself.
+`tools/_rapp1.mjs` mirrors the reference `kody-w/rapp-1/rapp.py`. The verifier replays
+every frame in sequence, recomputes both hash spaces, checks `prev`/`prev_wave`, rejects
+unknown specs and kinds, validates the static head pointers, and separately verifies the
+sealed legacy audit chain.
 
 ---
 
