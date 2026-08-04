@@ -16,7 +16,7 @@
     "sha256": "b7873ea897c83ac6de140005671f815280954f959c75bc3e5159c3ecfbe3d4ac",
     "kind": "body.pulse",
     "ts": "2026-07-15T00:49:24.623Z",
-    "_note": "The first constructor pin ever minted: this organism is hatched FROM a specific frame of its parent's biography. The pin is verifiable \u2014 fetch the parent's frames/24.json, recompute the sha256, and you have proof of exactly which moment of the body Herald was derived from.",
+    "_note": "The first constructor pin ever minted: this organism is hatched FROM a specific frame of its parent's biography. The pin is verifiable \u2014 fetch the parent's frames/24.json and recompute payload_hash = sha256(utf8(\"rapp/1:particle\") || 0x0A || utf8(canonical(payload))) per rapp/1; it must equal the payload_hash below. The sha256 field is the retained pre-\u00a77 (rapp-frame/2.0) content-address of the same payload, still checkable against frames/legacy/24.json \u2014 both address byte-identical payload bytes, so the pin survives the envelope migration intact. Consumers verify payload_hash; sha256 is kept as the migration record, never rewritten.",
     "payload_hash": "c51632aae92b76b2eaea061ad969441b4dfef42100bd8e0abcc43cdd447c868a",
     "_twin_id_migrated_from": "rappid:@kody-w/rapp-body:324197c16e7e0ca78e19f8a4e1aef76ed34b6694527bb566753c4c89a8ba71f6"
   },
