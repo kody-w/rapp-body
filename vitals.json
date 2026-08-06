@@ -1,12 +1,12 @@
 {
   "spec": "rapp-body-vitals/1.0",
   "stream_id": "rappid:@kody-w/rapp-body:817839d299ddfb173097c58a0434c5c1ef5cd2cd55086c46cfe728bf9bfeb657",
-  "updated": "2026-08-05T09:50:02.510Z",
+  "updated": "2026-08-06T09:59:04.379Z",
   "head": {
-    "seq": 30,
-    "payload_hash": "fa230ebe3c961d270956d210509855fefb5e06e56c754c4e81d08048343a69dc",
-    "frame_hash": "de891ec90d99a550a1602c308aaa8234fc0cb94c87b9ca840a960bc82b952b46",
-    "utc": "2026-08-05T09:50:02.468Z",
+    "seq": 31,
+    "payload_hash": "f55a9f411b72c972435c8283245d17a9c84a80bf3d1de03fb3784a3e56df42d7",
+    "frame_hash": "d99e95713ef9b2038aad1f4fe49b488856c63fd49601ad8ea67996e18b891137",
+    "utc": "2026-08-06T09:59:04.342Z",
     "kind": "body.pulse"
   },
   "health": {
@@ -16,16 +16,10 @@
     "repos_present": 53,
     "transport_unreadable": 0,
     "degraded": false,
-    "born_recent": [
-      "rapp-1"
-    ],
+    "born_recent": [],
     "vanished_recent": [],
     "heads_advanced_recent": [
       "openrappter",
-      "rapp-egg-hub",
-      "rapp-god",
-      "rapp-map",
-      "rapp-moment",
       "rapp-spine",
       "rappterbook",
       "RAR",
