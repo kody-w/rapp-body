@@ -1,12 +1,12 @@
 {
   "spec": "rapp-body-vitals/1.0",
   "stream_id": "rappid:@kody-w/rapp-body:817839d299ddfb173097c58a0434c5c1ef5cd2cd55086c46cfe728bf9bfeb657",
-  "updated": "2026-08-12T08:40:10.519Z",
+  "updated": "2026-08-13T08:44:22.131Z",
   "head": {
-    "seq": 38,
-    "payload_hash": "9020d1036f73927e1163390a86023892224006dce9d8075942d9ad13667aff89",
-    "frame_hash": "506142c6a12438f363a290df2e7dbd276d9dda2e403d318b7b125e7641cccecb",
-    "utc": "2026-08-12T08:40:10.475Z",
+    "seq": 39,
+    "payload_hash": "1a567c11a1e8ebd0a73ceb499544ecbe67f226d9f14493db743aec6ae5c1a8ac",
+    "frame_hash": "924d406427cd50eee952655a894583c40409d08d892c6870305f65604d2c0a97",
+    "utc": "2026-08-13T08:44:22.099Z",
     "kind": "body.pulse"
   },
   "health": {
