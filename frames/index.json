@@ -1,13 +1,13 @@
 {
   "spec": "rapp-frame-index/1.0",
   "stream_id": "rappid:@kody-w/rapp-body:817839d299ddfb173097c58a0434c5c1ef5cd2cd55086c46cfe728bf9bfeb657",
-  "generated": "2026-08-13T08:44:22.131Z",
-  "count": 40,
+  "generated": "2026-08-14T08:37:48.755Z",
+  "count": 41,
   "head": {
-    "seq": 39,
-    "payload_hash": "1a567c11a1e8ebd0a73ceb499544ecbe67f226d9f14493db743aec6ae5c1a8ac",
-    "frame_hash": "924d406427cd50eee952655a894583c40409d08d892c6870305f65604d2c0a97",
-    "utc": "2026-08-13T08:44:22.099Z",
+    "seq": 40,
+    "payload_hash": "b568f77c34c11928b122eb1405699b3a4cc1f6e18c40940bcdad04d4fb4eaf7e",
+    "frame_hash": "42f4d9165dcd162d1c2a48d076c9e6eb60f4b71b7b38fe274e381c91351488cc",
+    "utc": "2026-08-14T08:37:48.705Z",
     "kind": "body.pulse"
   },
   "frames": [
@@ -409,6 +409,16 @@
       "payload_hash": "1a567c11a1e8ebd0a73ceb499544ecbe67f226d9f14493db743aec6ae5c1a8ac",
       "frame_hash": "924d406427cd50eee952655a894583c40409d08d892c6870305f65604d2c0a97",
       "prev": "9020d1036f73927e1163390a86023892224006dce9d8075942d9ad13667aff89",
+      "prev_wave": null
+    },
+    {
+      "seq": 40,
+      "path": "frames/40.json",
+      "utc": "2026-08-14T08:37:48.705Z",
+      "kind": "body.pulse",
+      "payload_hash": "b568f77c34c11928b122eb1405699b3a4cc1f6e18c40940bcdad04d4fb4eaf7e",
+      "frame_hash": "42f4d9165dcd162d1c2a48d076c9e6eb60f4b71b7b38fe274e381c91351488cc",
+      "prev": "1a567c11a1e8ebd0a73ceb499544ecbe67f226d9f14493db743aec6ae5c1a8ac",
       "prev_wave": null
     }
   ]
