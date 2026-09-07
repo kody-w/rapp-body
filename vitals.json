@@ -1,12 +1,12 @@
 {
   "spec": "rapp-body-vitals/1.0",
   "stream_id": "rappid:@kody-w/rapp-body:817839d299ddfb173097c58a0434c5c1ef5cd2cd55086c46cfe728bf9bfeb657",
-  "updated": "2026-09-06T11:39:29.931Z",
+  "updated": "2026-09-07T13:30:55.039Z",
   "head": {
-    "seq": 58,
-    "payload_hash": "bcf71694daa978905b9101cd08d06b9ee16fb1710a63e1948aa85eb55c562007",
-    "frame_hash": "a324d095556e0d94b16e03c9dc435d5c007827059645a3937c1241af341f4cb6",
-    "utc": "2026-09-06T11:39:29.862Z",
+    "seq": 59,
+    "payload_hash": "2ad295447008a8d819cbd858d681aaad5b4459000704ec21a4fb71d51122dd09",
+    "frame_hash": "83c96e8be2b60c301408ff52f4378bf240d720ccb3d6c6e00f2f09fe3a07b12a",
+    "utc": "2026-09-07T13:30:54.970Z",
     "kind": "body.pulse"
   },
   "health": {
@@ -21,11 +21,9 @@
     "heads_advanced_recent": [
       "heimdall",
       "rapp-map",
-      "rapp-spine",
       "rapp-static-apis",
       "rappterbook",
-      "RAR",
-      "vbrainstem"
+      "RAR"
     ],
     "drift_sweep": {
       "verdict": "RECONCILED",
